@@ -1,3 +1,8 @@
+package Rpc;
+
+import JsonModule.JsonElement;
+import JsonModule.JsonSerializable;
+
 @JsonSerializable
 public class RequestVoteRPCDTO {
 

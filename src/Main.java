@@ -1,3 +1,5 @@
+import Rpc.RequestVoteRPCDTO;
+
 import java.io.DataInputStream;
 import java.io.DataOutput;
 import java.io.DataOutputStream;
@@ -13,7 +15,13 @@ public class Main {
 
 
         try{
-            JsonModuleTest.test();
+
+            RequestVoteRPCDTO dto = new RequestVoteRPCDTO();
+            dto.term = 10;
+
+            System.out.println("main java file executed");
+
+            System.out.println(dto);
 
         }catch (Exception ex) {
             System.out.println(ex.getLocalizedMessage());

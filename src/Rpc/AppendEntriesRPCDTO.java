@@ -1,5 +1,10 @@
+package Rpc;
+
+import JsonModule.JsonElement;
+import JsonModule.JsonSerializable;
+import State.Log;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 @JsonSerializable
 public class AppendEntriesRPCDTO {

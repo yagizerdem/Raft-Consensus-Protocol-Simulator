@@ -1,4 +1,7 @@
-import java.security.PublicKey;
+package State;
+
+import JsonModule.JsonElement;
+import JsonModule.JsonSerializable;
 
 @JsonSerializable
 public class Log {
