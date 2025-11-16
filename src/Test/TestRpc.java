@@ -1,11 +1,13 @@
+package  Test;
+
 import java.io.File;
 
-public class Launcher {
+public class TestRpc {
 
     public static void main(String[] args) throws Exception {
 
 
-        int numServers = 5;
+        int numServers = 2;
         int basePort = 9000;
 
         String classpath = new File("out/production/Raft").getAbsolutePath();

@@ -15,13 +15,7 @@ public class Main {
 
 
         try{
-
-            RequestVoteRPCDTO dto = new RequestVoteRPCDTO();
-            dto.term = 10;
-
-            System.out.println("main java file executed");
-
-            System.out.println(dto);
+            System.out.println("hit here !");
 
         }catch (Exception ex) {
             System.out.println(ex.getLocalizedMessage());
