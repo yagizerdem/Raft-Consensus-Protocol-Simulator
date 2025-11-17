@@ -1,8 +1,7 @@
-package Rpc;
+package Models;
 
 import JsonModule.JsonElement;
 import JsonModule.JsonSerializable;
-import State.Log;
 
 import java.util.ArrayList;
 
@@ -27,4 +26,17 @@ public class AppendEntriesRPCDTO {
     public long leaderCommit;
 
     public AppendEntriesRPCDTO(){}
+
+
+    @Override
+    public String toString() {
+        return "AppendEntriesRPCDTO{" +
+                "term=" + term +
+                ", leaderId='" + leaderId + '\'' +
+                ", prevLogIndex=" + prevLogIndex +
+                ", prevLogTerm=" + prevLogTerm +
+                ", leaderCommit=" + leaderCommit +
+                ", entries=" + (entries != null ? entries.toString() : "null") +
+                '}';
+    }
 }

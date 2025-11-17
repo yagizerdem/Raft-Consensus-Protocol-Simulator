@@ -272,7 +272,6 @@ public class JsonModule {
                     tokenStream.add(token);
                     this.move(); // consume char
                 }
-
             }
 
             return  tokenStream;

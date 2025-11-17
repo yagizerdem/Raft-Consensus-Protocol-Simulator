@@ -1,4 +1,4 @@
-package Rpc;
+package Models;
 
 import JsonModule.JsonElement;
 import JsonModule.JsonSerializable;
@@ -22,10 +22,10 @@ public class AppendEntriesRPCResultDTO {
 
     @Override
     public String toString() {
-        return "AppendEntriesRPCResultDTO{" +
-                "term=" + term +
-                ", success=" + success +
-                '}';
+        return "{ \"AppendEntriesRPCResultDTO\": {" +
+                "\"term\": " + term +
+                ", \"success\": " + success +
+                "} }";
     }
 
 

@@ -1,5 +1,9 @@
 package JsonModule;
 
+import Models.AppendEntriesRPCDTO;
+import Models.RpcPayload;
+import RpcModule.RpcTypes;
+
 import java.util.ArrayList;
 
 public class JsonModuleTest {
@@ -15,6 +19,38 @@ public class JsonModuleTest {
         System.out.println(c1);
 
     }
+
+    public static void testAppendEntriesRpcDto() throws Exception {
+        AppendEntriesRPCDTO dto = new AppendEntriesRPCDTO();
+        dto.term = 10;
+        dto.leaderCommit = 2;
+
+        JsonModule jsonModule = new JsonModule();
+        String json = jsonModule.Serialize(dto);
+        System.out.println(json);
+        AppendEntriesRPCDTO c1 = jsonModule.Deserialize(json, AppendEntriesRPCDTO.class);
+        System.out.println(c1);
+
+    }
+
+    public static void testRpcPayload() throws Exception {
+        RpcPayload dto = new RpcPayload();
+        dto.type = RpcTypes.AppendEntriesRpc;
+        AppendEntriesRPCDTO appendDto = new AppendEntriesRPCDTO();
+        appendDto.term = 10;
+        appendDto.prevLogIndex = 2;
+
+        JsonModule jsonModule = new JsonModule();
+
+        dto.appendEntriesRPCDTO = appendDto;
+
+        String json = jsonModule.Serialize(dto);
+        System.out.println(json);
+        RpcPayload c1 = jsonModule.Deserialize(json, RpcPayload.class);
+        System.out.println(c1);
+
+    }
+
 
 
     @JsonSerializable
