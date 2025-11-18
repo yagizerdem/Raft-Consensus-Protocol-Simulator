@@ -9,6 +9,9 @@ public class Log {
     public long index;
 
     @JsonElement
+    public long term;
+
+    @JsonElement
     public String text;
 
 

@@ -1,0 +1,5 @@
+{
+	"currentTerm" : "0",
+	"logs" : [ 
+]
+}
