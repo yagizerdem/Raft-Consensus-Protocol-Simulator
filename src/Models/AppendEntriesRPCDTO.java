@@ -19,13 +19,15 @@ public class AppendEntriesRPCDTO {
     @JsonElement
     public long prevLogTerm;
 
-
+    @JsonElement
     public ArrayList<Log> entries;
 
     @JsonElement
     public long leaderCommit;
 
-    public AppendEntriesRPCDTO(){}
+    public AppendEntriesRPCDTO(){
+        entries = new ArrayList<>();
+    }
 
 
     @Override

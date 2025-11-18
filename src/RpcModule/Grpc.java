@@ -112,7 +112,6 @@ public class Grpc {
     public void handleRpc(Socket s) {
         try (DataInputStream in = new DataInputStream(s.getInputStream())) {
             String serializedMessage = in.readUTF();
-            System.out.println(serializedMessage);
 
             RpcPayload payload = jsonModule.Deserialize(serializedMessage, RpcPayload.class);
 
