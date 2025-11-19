@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class Storage {
 
+    public final Object lock = new Object();
     private static final Object fileLock = new Object();
     private JsonModule jsonModule;
     public int serverPort;
@@ -46,6 +47,14 @@ public class Storage {
             new File(cerrUri).createNewFile();
         }
 
+
+        // initialize with persistant state
+        if(Files.exists(Path.of(serverStateUri))) {
+            PersistentServerState persistentServerState = this.ReadPersistentServerState();
+            this.setVotedFor(persistentServerState.votedFor);
+            this.setCurrentTerm(persistentServerState.currentTerm);
+            this.serverState.logs = persistentServerState.logs;
+        }
     }
 
     public void WritePersistentServerState(PersistentServerState serverState) throws Exception{

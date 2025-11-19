@@ -1,5 +1,9 @@
 {
-	"currentTerm" : "0",
-	"logs" : [ 
-]
+	"commitIndex" : "0",
+	"lastApplied" : "0",
+	"nextIndex" : [ 
+],
+	"matchIndex" : [ 
+],
+	"serverLevel" : "Follower"
 }

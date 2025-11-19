@@ -1,20 +1,28 @@
 package Raft;
 
+import JsonModule.JsonElement;
+import JsonModule.JsonSerializable;
 import Models.Log;
 
 import java.util.ArrayList;
 
+@JsonSerializable
 public class ServerState extends PersistentServerState {
 
 
     // Volatile state on all servers
 
+    @JsonElement
     protected int commitIndex;
+    @JsonElement
     protected int lastApplied;
 
     //Volatile state on leaders
+    @JsonElement
     protected ArrayList<Integer> nextIndex = new ArrayList<>();
+    @JsonElement
     protected  ArrayList<Integer> matchIndex = new ArrayList<>();
+    @JsonElement
 
     protected String serverLevel = ServerLevel.Follower;
 
