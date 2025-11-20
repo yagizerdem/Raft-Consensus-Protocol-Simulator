@@ -14,8 +14,7 @@ public class PersistentServerState {
     @JsonElement
     public String votedFor; // server ports used as unique identifier as server id's
 
-    @JsonElement
-    public ArrayList<Log> logs = new ArrayList<>();
+
 
     public void setCurrentTerm(long currentTerm) {
         this.currentTerm = currentTerm;
@@ -29,11 +28,4 @@ public class PersistentServerState {
         this.votedFor = votedFor;
     }
 
-    public ArrayList<Log> getLogs() {
-        return logs;
-    }
-
-    public void setLogs(ArrayList<Log> logs) {
-        this.logs = logs;
-    }
 }

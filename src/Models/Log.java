@@ -7,12 +7,9 @@ import JsonModule.JsonSerializable;
 public class Log {
     @JsonElement
     public long index;
-
     @JsonElement
     public long term;
-
     @JsonElement
-    public String text;
-
+    public String shellCommand;
 
 }

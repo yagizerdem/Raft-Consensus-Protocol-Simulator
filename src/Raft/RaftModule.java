@@ -29,16 +29,20 @@ public class RaftModule {
 
     private Storage storage;
 
+    private  RedirectOutput redirectOutput;
+
     public  RaftModule(int serverPort, ArrayList<Integer> peers){
         this.serverPort = serverPort;
         this.electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
         this.peers = peers;
         this.storage = new Storage(serverPort);
+        redirectOutput = new RedirectOutput(serverPort);
     }
 
     public void Start(){
         try{
             this.storage.initialize();
+            this.redirectOutput.initialize();
 
             this.grpc = new Grpc(serverPort, new IRpcHandler() {
                 @Override
@@ -72,13 +76,11 @@ public class RaftModule {
 
 
     public void handleRequestVoteRpc(RequestVoteRPCDTO requestVoteDto){
+        this.redirectOutput.WriteCout("Server " + this.serverPort + " handled request vote rpc");
         synchronized (this.storage.lock){
             if(requestVoteDto.term > this.storage.getCurrentTerm()) {
-                this.storage.setServerLevel(ServerLevel.Follower);
-                this.storage.setVotedFor(null);
-                this.voteRecievedCounter = 0;
-                this.storage.setCurrentTerm(requestVoteDto.term);
-                this.electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
+                stepDownToFollower(requestVoteDto.term);
+
             }
 
             RequestVoteResultRPCDTO response = new RequestVoteResultRPCDTO();
@@ -131,13 +133,10 @@ public class RaftModule {
     }
 
     public void handleRequestVoteResponseRpc(RequestVoteResultRPCDTO requestVoteResponseDto) {
+        this.redirectOutput.WriteCout("Server " + this.serverPort + " handled request vote response rpc");
         synchronized (this.storage.lock) {
             if(requestVoteResponseDto.term > this.storage.getCurrentTerm()) {
-                this.storage.setServerLevel(ServerLevel.Follower);
-                this.storage.setVotedFor(null);
-                this.voteRecievedCounter = 0;
-                this.storage.setCurrentTerm(requestVoteResponseDto.term);
-                this.electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
+                stepDownToFollower(requestVoteResponseDto.term);
                 return;
             }
 
@@ -158,13 +157,10 @@ public class RaftModule {
     }
 
     public void handleAppendEntriesRpc(AppendEntriesRPCDTO appendEntriesDto) {
+        this.redirectOutput.WriteCout("Server " + this.serverPort + " handled append entries rpc");
         synchronized (this.storage.lock) {
             if(appendEntriesDto.term > this.storage.getCurrentTerm()) {
-                this.storage.setServerLevel(ServerLevel.Follower);
-                this.storage.setVotedFor(null);
-                this.voteRecievedCounter = 0;
-                this.storage.setCurrentTerm(appendEntriesDto.term);
-                this.electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
+                stepDownToFollower(appendEntriesDto.term);
             }
 
             // heartbeat append entry rpc
@@ -178,6 +174,7 @@ public class RaftModule {
     }
 
     public void handleAppendEntriesResponseRpc(AppendEntriesRPCResultDTO appendEntriesResponseDto) {
+        this.redirectOutput.WriteCout("Server " + this.serverPort + " handled append entries response rpc");
         System.out.println(appendEntriesResponseDto);
     }
 
@@ -186,14 +183,12 @@ public class RaftModule {
             try {
                 while (true) {
                     synchronized (this.storage.lock) {
-                        if (this.storage.getServerLevel().equals(ServerLevel.Leader)) {
-                        } else {
-                            if (electionTimeout < 0) {
-                                electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
-                                StartElection();
-                            }
-                            electionTimeout -= timeFragment;
+                        if (electionTimeout < 0) {
+                            this.redirectOutput.WriteCout("Server " + this.serverPort + " hit timeout");
+                            electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
+                            StartElection();
                         }
+                        electionTimeout -= timeFragment;
                     }
 
                     Thread.sleep(timeFragment);
@@ -207,6 +202,8 @@ public class RaftModule {
     }
 
     public  void StartElection(){
+        if (this.storage.getServerLevel().equals(ServerLevel.Leader)) return;
+        this.redirectOutput.WriteCout("Server " + this.serverPort + " started new election");
         RequestVoteRPCDTO dto = new RequestVoteRPCDTO();
         synchronized (this.storage.lock){
             if(this.storage.getServerLevel().equals(ServerLevel.Leader)) return;
@@ -241,7 +238,6 @@ public class RaftModule {
             try{
                 while (true){
                     if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
-                        System.out.println(this.storage.getServerLevel() + " " + this.serverPort);
                         AppendEntriesRPCDTO heartBeat = new AppendEntriesRPCDTO();
                         heartBeat.entries = new ArrayList<>();
                         heartBeat.term = this.storage.getCurrentTerm();
@@ -249,13 +245,25 @@ public class RaftModule {
                         for(int peer : this.peers){
                             grpc.sendAppendEntriesRpc(peer, heartBeat);
                         }
+                        this.redirectOutput.WriteCout("Server " + this.serverPort + " heartbeat send");
                     }
+
                     Thread.sleep(this.timeFragment);
                 }
             }catch (Exception ex) {
-                System.out.println(ex.getMessage() + "error here !");
+                System.out.println(ex.getMessage());
             }
 
         }).start();
+    }
+
+
+    public void stepDownToFollower(long term){
+        this.storage.setServerLevel(ServerLevel.Follower);
+        this.storage.setVotedFor(null);
+        this.voteRecievedCounter = 0;
+        this.storage.setCurrentTerm(term);
+        this.electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
+        this.redirectOutput.WriteCout("Server " + this.serverPort + " stepped down to follower");
     }
 }
