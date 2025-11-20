@@ -40,8 +40,6 @@ public class RaftModule {
         try{
             this.storage.initialize();
 
-            manageTimeout();
-
             this.grpc = new Grpc(serverPort, new IRpcHandler() {
                 @Override
                 public void handleRequestVoteRpc(RequestVoteRPCDTO requestVoteDto) {
@@ -63,6 +61,9 @@ public class RaftModule {
                     RaftModule.this.handleAppendEntriesResponseRpc(appendEntriesResponseDto);
                 }
             });
+
+            manageTimeout();
+            sendHeartBeat();
         }catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -77,6 +78,7 @@ public class RaftModule {
                 this.storage.setVotedFor(null);
                 this.voteRecievedCounter = 0;
                 this.storage.setCurrentTerm(requestVoteDto.term);
+                this.electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
             }
 
             RequestVoteResultRPCDTO response = new RequestVoteResultRPCDTO();
@@ -135,6 +137,7 @@ public class RaftModule {
                 this.storage.setVotedFor(null);
                 this.voteRecievedCounter = 0;
                 this.storage.setCurrentTerm(requestVoteResponseDto.term);
+                this.electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
                 return;
             }
 
@@ -155,7 +158,23 @@ public class RaftModule {
     }
 
     public void handleAppendEntriesRpc(AppendEntriesRPCDTO appendEntriesDto) {
-        System.out.println(appendEntriesDto);
+        synchronized (this.storage.lock) {
+            if(appendEntriesDto.term > this.storage.getCurrentTerm()) {
+                this.storage.setServerLevel(ServerLevel.Follower);
+                this.storage.setVotedFor(null);
+                this.voteRecievedCounter = 0;
+                this.storage.setCurrentTerm(appendEntriesDto.term);
+                this.electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
+            }
+
+            // heartbeat append entry rpc
+            if(appendEntriesDto.entries.size() == 0) {
+                this.electionTimeout = minTimeout + (maxTimeout - minTimeout) * random.nextDouble();
+                return;
+            }
+
+        }
+
     }
 
     public void handleAppendEntriesResponseRpc(AppendEntriesRPCResultDTO appendEntriesResponseDto) {
@@ -217,4 +236,26 @@ public class RaftModule {
 
     }
 
+    public void sendHeartBeat(){
+        new Thread(() ->{
+            try{
+                while (true){
+                    if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
+                        System.out.println(this.storage.getServerLevel() + " " + this.serverPort);
+                        AppendEntriesRPCDTO heartBeat = new AppendEntriesRPCDTO();
+                        heartBeat.entries = new ArrayList<>();
+                        heartBeat.term = this.storage.getCurrentTerm();
+
+                        for(int peer : this.peers){
+                            grpc.sendAppendEntriesRpc(peer, heartBeat);
+                        }
+                    }
+                    Thread.sleep(this.timeFragment);
+                }
+            }catch (Exception ex) {
+                System.out.println(ex.getMessage() + "error here !");
+            }
+
+        }).start();
+    }
 }

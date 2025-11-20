@@ -5,5 +5,5 @@
 ],
 	"matchIndex" : [ 
 ],
-	"serverLevel" : "Leader"
+	"serverLevel" : "Follower"
 }
