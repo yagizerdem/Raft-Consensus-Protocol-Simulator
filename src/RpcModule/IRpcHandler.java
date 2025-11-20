@@ -1,9 +1,6 @@
 package RpcModule;
 
-import Models.AppendEntriesRPCDTO;
-import Models.AppendEntriesRPCResultDTO;
-import Models.RequestVoteRPCDTO;
-import Models.RequestVoteResultRPCDTO;
+import Models.*;
 
 public interface IRpcHandler {
 
@@ -14,4 +11,6 @@ public interface IRpcHandler {
     void handleAppendEntriesRpc(AppendEntriesRPCDTO appendEntriesDto);
 
     void handleAppendEntriesResponseRpc(AppendEntriesRPCResultDTO appendEntriesResponseDto);
+
+    void handleClientCommandRpc(ClientCommandRPCDTO clientCommandDto);
 }

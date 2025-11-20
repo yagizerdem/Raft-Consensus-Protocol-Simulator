@@ -23,6 +23,9 @@ public class RpcPayload {
     public RequestVoteResultRPCDTO requestVoteResultRPCDTO;
 
     @JsonElement
+    public ClientCommandRPCDTO clientCommandRPCDTO;
+
+    @JsonElement
     public String type;
 
     @Override

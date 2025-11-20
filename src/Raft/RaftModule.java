@@ -64,6 +64,11 @@ public class RaftModule {
                 public void handleAppendEntriesResponseRpc(AppendEntriesRPCResultDTO appendEntriesResponseDto) {
                     RaftModule.this.handleAppendEntriesResponseRpc(appendEntriesResponseDto);
                 }
+
+                @Override
+                public void handleClientCommandRpc(ClientCommandRPCDTO clientCommandRPCDTO) {
+                    RaftModule.this.handleClientCommandRpc(clientCommandRPCDTO);
+                }
             });
 
             manageTimeout();
@@ -175,7 +180,21 @@ public class RaftModule {
 
     public void handleAppendEntriesResponseRpc(AppendEntriesRPCResultDTO appendEntriesResponseDto) {
         this.redirectOutput.WriteCout("Server " + this.serverPort + " handled append entries response rpc");
+        synchronized (this.storage.lock) {
+            if(appendEntriesResponseDto.term > this.storage.getCurrentTerm()) {
+                stepDownToFollower(appendEntriesResponseDto.term);
+            }
+        }
+
         System.out.println(appendEntriesResponseDto);
+    }
+
+    public void handleClientCommandRpc(ClientCommandRPCDTO clientCommandRpcDto){
+        synchronized (this.storage.lock) {
+            if(!this.storage.getServerLevel().equals(ServerLevel.Leader)) return;
+            System.out.println(clientCommandRpcDto);
+
+        }
     }
 
     public void manageTimeout(){

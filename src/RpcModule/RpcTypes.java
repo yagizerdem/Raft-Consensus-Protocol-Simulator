@@ -5,4 +5,6 @@ public class RpcTypes {
     public static String AppendEntriesResponseRpc = "AppendEntriesResponseRpc";
     public static String RequestVoteRpc = "RequestVoteRpc";
     public static String RequestVoteResponseRpc = "RequestVoteResponseRpc";
+
+    public static String ClientCommandRpc = "ClientCommandRpc";
 }
