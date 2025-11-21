@@ -15,6 +15,9 @@ public class RequestVoteRPCDTO {
     @JsonElement
     public long lastLogTerm;
 
+    @JsonElement
+    public String traceId;
+
     public RequestVoteRPCDTO() {
     }
 
@@ -32,6 +35,7 @@ public class RequestVoteRPCDTO {
                 ", candidateId='" + candidateId + '\'' +
                 ", lastLogIndex=" + lastLogIndex +
                 ", lastLogTerm=" + lastLogTerm +
+                ", lastLogTerm=" + traceId +
                 '}';
     }
 }

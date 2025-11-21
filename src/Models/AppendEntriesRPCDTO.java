@@ -25,6 +25,9 @@ public class AppendEntriesRPCDTO {
     @JsonElement
     public long leaderCommit;
 
+    @JsonElement
+    public String traceId;
+
     public AppendEntriesRPCDTO(){
         entries = new ArrayList<>();
     }
@@ -39,6 +42,7 @@ public class AppendEntriesRPCDTO {
                 ", prevLogTerm=" + prevLogTerm +
                 ", leaderCommit=" + leaderCommit +
                 ", entries=" + (entries != null ? entries.toString() : "null") +
+                ", \"traceId\" . " + traceId +
                 '}';
     }
 }

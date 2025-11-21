@@ -11,6 +11,9 @@ public class RequestVoteResultRPCDTO {
     @JsonElement
     public boolean voteGranted;
 
+    @JsonElement
+    public String traceId;
+
     public RequestVoteResultRPCDTO() {
     }
 
@@ -24,6 +27,7 @@ public class RequestVoteResultRPCDTO {
         return "RequestVoteResultRPCDTO{" +
                 "term=" + term +
                 ", voteGranted=" + voteGranted +
+                ", traceId=" + traceId +
                 '}';
     }
 }

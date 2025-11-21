@@ -11,6 +11,8 @@ public class AppendEntriesRPCResultDTO {
     @JsonElement
     public boolean success;
 
+    @JsonElement
+    public String traceId;
 
     public AppendEntriesRPCResultDTO() {
     }
@@ -25,6 +27,7 @@ public class AppendEntriesRPCResultDTO {
         return "{ \"AppendEntriesRPCResultDTO\": {" +
                 "\"term\": " + term +
                 ", \"success\": " + success +
+                ", \"traceId\" . " + traceId +
                 "} }";
     }
 

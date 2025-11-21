@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class Storage {
 
@@ -67,7 +68,7 @@ public class Storage {
 
         // initialize with logs
         if(Files.exists(Path.of(logUri))) {
-//            ArrayList<Log> logs = this.
+            ArrayList<Log> logs = this.readAllLogs();
         }
 
     }
@@ -218,12 +219,12 @@ public class Storage {
     }
 
 
-    public void setNextIndex(ArrayList<Integer> nextIndex) {
+    public void setNextIndex(Hashtable<Integer, Integer> nextIndex) {
         this.serverState.nextIndex = nextIndex;
     }
 
 
-    public void setMatchIndex(ArrayList<Integer> matchIndex) {
+    public void setMatchIndex(Hashtable<Integer, Integer> matchIndex) {
         this.serverState.matchIndex = matchIndex;
     }
 
@@ -256,11 +257,11 @@ public class Storage {
         return this.serverState.lastApplied;
     }
 
-    public ArrayList<Integer> getNextIndex() {
+    public Hashtable<Integer, Integer> getNextIndex() {
         return this.serverState.nextIndex;
     }
 
-    public ArrayList<Integer> getMatchIndex() {
+    public Hashtable<Integer, Integer> getMatchIndex() {
         return this.serverState.matchIndex;
     }
 
@@ -268,5 +269,17 @@ public class Storage {
         return this.serverState.serverLevel;
     }
 
+
+
+    // log related utils
+    public Log getLastLog(){
+        if(this.logs.isEmpty()) return  null;
+        return  this.logs.get(this.logs.size() -1);
+    }
+    public Log getLogByIndex(int idx){
+        int offset = idx -1;
+        if(offset < 0 || offset >= this.logs.size()) return null;
+        return  this.logs.get(offset);
+    }
 
 }

@@ -1,5 +1,4 @@
 {
-	"currentTerm" : "8",
-	"logs" : [ 
-]
+	"currentTerm" : "14",
+	"votedFor" : "9002"
 }

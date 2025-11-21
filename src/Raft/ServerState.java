@@ -5,6 +5,7 @@ import JsonModule.JsonSerializable;
 import Models.Log;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 @JsonSerializable
 public class ServerState extends PersistentServerState {
@@ -19,9 +20,9 @@ public class ServerState extends PersistentServerState {
 
     //Volatile state on leaders
     @JsonElement
-    protected ArrayList<Integer> nextIndex = new ArrayList<>();
+    protected Hashtable<Integer, Integer> nextIndex = new Hashtable<Integer, Integer>();
     @JsonElement
-    protected  ArrayList<Integer> matchIndex = new ArrayList<>();
+    protected  Hashtable<Integer, Integer>matchIndex = new Hashtable<Integer, Integer>();
     @JsonElement
 
     protected String serverLevel = ServerLevel.Follower;
@@ -46,19 +47,19 @@ public class ServerState extends PersistentServerState {
         this.lastApplied = lastApplied;
     }
 
-    public ArrayList<Integer> getNextIndex() {
+    public Hashtable<Integer, Integer> getNextIndex() {
         return nextIndex;
     }
 
-    public void setNextIndex(ArrayList<Integer> nextIndex) {
+    public void setNextIndex(Hashtable<Integer, Integer> nextIndex) {
         this.nextIndex = nextIndex;
     }
 
-    public ArrayList<Integer> getMatchIndex() {
+    public Hashtable<Integer, Integer> getMatchIndex() {
         return matchIndex;
     }
 
-    public void setMatchIndex(ArrayList<Integer> matchIndex) {
+    public void setMatchIndex(Hashtable<Integer, Integer> matchIndex) {
         this.matchIndex = matchIndex;
     }
 
@@ -76,9 +77,8 @@ public class ServerState extends PersistentServerState {
         serverState.lastApplied  = 0;
         serverState.currentTerm =0;
         serverState.votedFor = null;
-        serverState.nextIndex = new ArrayList<>();
-        serverState.matchIndex = new ArrayList<>();
-        serverState.logs = new ArrayList<>();
+        serverState.nextIndex = new Hashtable<Integer, Integer>();
+        serverState.matchIndex = new Hashtable<Integer, Integer>();
         serverState.serverLevel = ServerLevel.Follower;
 
         return  serverState;
