@@ -5,9 +5,11 @@ import RpcModule.Grpc;
 import RpcModule.IRpcHandler;
 import com.sun.jdi.event.ThreadStartEvent;
 
+import javax.sound.midi.Soundbank;
 import javax.swing.*;
 import javax.swing.plaf.TableHeaderUI;
 import javax.swing.text.Style;
+import java.io.File;
 import java.io.PipedReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -41,6 +43,9 @@ public class RaftModule {
     public Hashtable<String, Integer> appendEntryFollowerSocketPort = new Hashtable<>();
 
     public boolean initAsLeader;
+
+    public int stateMachineLogIndex = 1;
+
     public RaftModule(int serverPort, ArrayList<Integer> peers, boolean initAsLeader){
         this.serverPort = serverPort;
         this.peers = peers;
@@ -48,6 +53,7 @@ public class RaftModule {
         this.storage = new Storage(serverPort);
         this.redirectOutput = new RedirectOutput(serverPort);
         this.initAsLeader = initAsLeader;
+        this.stateMachineLogIndex = 1;
 
     }
 
@@ -58,6 +64,7 @@ public class RaftModule {
             this.manageTimeout();
             this.manageHeartbeat();
             this.manageAppendEntries();
+            this.manageStateMachine();
 
             if(this.initAsLeader) {
                 this.storage.setServerLevel(ServerLevel.Leader);
@@ -277,31 +284,36 @@ public class RaftModule {
     private void handleAppendResponseRpc(AppendEntriesRPCResultDTO response) {
 
         synchronized (this.storage.lock) {
-            int follower = appendEntryFollowerSocketPort.get(response.traceId);
+            try{
+                int follower = appendEntryFollowerSocketPort.get(response.traceId);
 
-            if (response.term > storage.getCurrentTerm()) {
-                stepDownFollower(response.term);
-                return;
+                if (response.term > storage.getCurrentTerm()) {
+                    stepDownFollower(response.term);
+                    return;
+                }
+
+                if (!response.success) {
+                    int old = storage.getNextIndex().get(follower);
+                    storage.getNextIndex().put(follower, Math.max(old - 1, 1));
+                    return;
+                }
+
+                AppendEntriesRPCDTO req = appendEntriesRpcDtoCache.get(response.traceId);
+
+                if (req.entries.isEmpty()) {
+                    return;
+                }
+
+                int lastSentIndex = (int)(req.prevLogIndex + req.entries.size());
+
+                storage.getMatchIndex().put(follower, lastSentIndex);
+                storage.getNextIndex().put(follower, lastSentIndex + 1);
+
+                tryCommitEntries();
+            }finally {
+                appendEntriesRpcDtoCache.remove(response.traceId);
+                appendEntryFollowerSocketPort.remove(response.traceId);
             }
-
-            if (!response.success) {
-                int old = storage.getNextIndex().get(follower);
-                storage.getNextIndex().put(follower, Math.max(old - 1, 1));
-                return;
-            }
-
-            AppendEntriesRPCDTO req = appendEntriesRpcDtoCache.get(response.traceId);
-
-            if (req.entries.isEmpty()) {
-                return;
-            }
-
-            int lastSentIndex = (int)(req.prevLogIndex + req.entries.size());
-
-            storage.getMatchIndex().put(follower, lastSentIndex);
-            storage.getNextIndex().put(follower, lastSentIndex + 1);
-
-            tryCommitEntries();
         }
     }
 
@@ -432,7 +444,6 @@ public class RaftModule {
                         Thread.sleep((int)this.timeFragment);
                         continue;
                     }
-                    System.out.println("hit 2");
 
                     for(int i = 0; i < peers.size(); i++){
                         int peer = peers.get(i);
@@ -472,6 +483,52 @@ public class RaftModule {
         }).start();
     }
 
+    public void manageStateMachine(){
+        new Thread(() ->{
+            while (true) {
+                try{
+                    Log currentLog  = this.storage.getLogByIndex(this.stateMachineLogIndex);
+                    if(currentLog == null) {
+                        Thread.sleep((int)this.timeFragment * 3);
+                        continue;
+                    };
+                    if(this.storage.getCommitIndex() < this.storage.getLastApplied()) {
+                        Thread.sleep((int)this.timeFragment * 3);
+                        continue;
+                    };
+
+                    String shellCommand = currentLog.shellCommand;
+                    String cwd = "./" + serverPort;
+
+
+                    ProcessBuilder pb = new ProcessBuilder();
+
+                    if (System.getProperty("os.name").toLowerCase().contains("win")) {
+                        pb.command("cmd.exe", "/c", shellCommand);
+                    } else {
+                        pb.command("sh", "-c", shellCommand);
+                    }
+                    pb.directory(new File(cwd));
+
+                    pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+                    pb.redirectError(ProcessBuilder.Redirect.INHERIT);
+
+                    Process process = pb.start();
+
+                    int exitCode = process.waitFor();
+                    System.out.println("Shell command exited with code: " + exitCode);
+
+                    this.stateMachineLogIndex += 1;
+                    this.storage.setLastApplied(this.storage.getLastApplied() + 1);
+
+                    Thread.sleep((int)this.timeFragment * 3);
+                }catch (Exception ex){
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }).start();
+    }
+
     // auxilary
     public float generateRandomTime() {
         return minTime + (float)(Math.random() * (maxTime - minTime));
@@ -497,6 +554,7 @@ public class RaftModule {
         this.grpc.sendRequestVoteResponseRpc(
                 Integer.parseInt(req.candidateId), res);
     }
+
 
 
 }
