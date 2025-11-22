@@ -26,6 +26,8 @@ public class RpcPayload {
     public ClientCommandRPCDTO clientCommandRPCDTO;
 
     @JsonElement
+    public ClientCommandRPCResultDTO clientCommandRPCResultDTO;
+    @JsonElement
     public String type;
 
     @Override
@@ -36,6 +38,7 @@ public class RpcPayload {
                 ", requestVoteRPCDTO=" + requestVoteRPCDTO +
                 ", appendEntriesRPCResultDTO=" + appendEntriesRPCResultDTO +
                 ", requestVoteResultRPCDTO=" + requestVoteResultRPCDTO +
+                ", clientCommandRPCResultDTO=" + clientCommandRPCDTO +
                 '}';
     }
 }

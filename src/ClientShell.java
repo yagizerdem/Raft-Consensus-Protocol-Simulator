@@ -43,6 +43,13 @@ public class ClientShell {
             public void handleClientCommandRpc(ClientCommandRPCDTO clientCommandRpcDto){
                 throw new UnsupportedOperationException();
             }
+
+            @Override
+            public void handleClientCommandResponseRpc(ClientCommandRPCResultDTO clientCommandRPCResultDTO) {
+                ClientShell.handleClientCommandResponseRpc(clientCommandRPCResultDTO);
+            }
+
+
         });
         peers = new ArrayList<>();
 
@@ -78,4 +85,8 @@ public class ClientShell {
         }).start();
     }
 
+
+    public static void handleClientCommandResponseRpc(ClientCommandRPCResultDTO dto){
+        System.out.println(dto);
+    }
 }

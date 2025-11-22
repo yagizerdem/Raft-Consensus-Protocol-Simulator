@@ -111,7 +111,17 @@ public class Grpc {
         }
     }
 
-
+    public void sendClientCommandResponseRpc(int targetPort, ClientCommandRPCResultDTO dto){
+        try {
+            RpcPayload payload = new RpcPayload();
+            payload.clientCommandRPCResultDTO = dto;
+            payload.type = RpcTypes.ClientCommandResponseRpc;
+            String json = jsonModule.Serialize(payload);
+            sendRpc(targetPort, json);
+        } catch (Exception ex) {
+            System.out.println("sendClientCommandResponseRpc error: " + ex.getMessage());
+        }
+    }
 
     // rpc handlers
 
@@ -150,6 +160,11 @@ public class Grpc {
 
             if(payload.type.equals(RpcTypes.ClientCommandRpc)) {
                 this.rpcHandlers.handleClientCommandRpc(payload.clientCommandRPCDTO);
+                return;
+            }
+
+            if(payload.type.equals(RpcTypes.ClientCommandResponseRpc)) {
+                this.rpcHandlers.handleClientCommandResponseRpc(payload.clientCommandRPCResultDTO);
                 return;
             }
 

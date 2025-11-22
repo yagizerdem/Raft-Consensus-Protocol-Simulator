@@ -7,4 +7,6 @@ public class RpcTypes {
     public static String RequestVoteResponseRpc = "RequestVoteResponseRpc";
 
     public static String ClientCommandRpc = "ClientCommandRpc";
+
+    public static String ClientCommandResponseRpc = "ClientCommandResponseRpc";
 }

@@ -13,4 +13,6 @@ public interface IRpcHandler {
     void handleAppendEntriesResponseRpc(AppendEntriesRPCResultDTO appendEntriesResponseDto);
 
     void handleClientCommandRpc(ClientCommandRPCDTO clientCommandDto);
+
+    void handleClientCommandResponseRpc(ClientCommandRPCResultDTO clientCommandRPCResultDTO);
 }

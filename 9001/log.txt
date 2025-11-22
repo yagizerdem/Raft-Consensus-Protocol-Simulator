@@ -1,0 +1,2 @@
+0|1|type nul > code.txt
+0|2|sgg

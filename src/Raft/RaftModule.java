@@ -119,6 +119,13 @@ public class RaftModule {
                 public void handleClientCommandRpc(ClientCommandRPCDTO clientCommandDto) {
                     RaftModule.this.handleClientCommandRpc(clientCommandDto);
                 }
+
+                @Override
+                public void handleClientCommandResponseRpc(ClientCommandRPCResultDTO clientCommandRPCResultDTO) {
+                    throw new UnsupportedOperationException(); // server should not handle client response
+                }
+
+
             });
         }catch (Exception ex){
             redirectOutput.WriteCerr(ex.getMessage());
@@ -328,6 +335,7 @@ public class RaftModule {
         }
     }
 
+
     private void tryCommitEntries() {
 
         int N = storage.getLastLog() != null ? (int) storage.getLastLog().index : 0;
@@ -520,6 +528,15 @@ public class RaftModule {
 
                     this.stateMachineLogIndex += 1;
                     this.storage.setLastApplied(this.storage.getLastApplied() + 1);
+
+                    if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
+                        // propogate response back to client
+                        ClientCommandRPCResultDTO dto = new ClientCommandRPCResultDTO();
+                        dto.setSuccess(true);
+                        dto.setCommitIndex(this.storage.getCommitIndex());
+                        dto.setMessage("shell command applied successfully");
+                        this.grpc.sendClientCommandResponseRpc(8000, dto);
+                    }
 
                     Thread.sleep((int)this.timeFragment * 3);
                 }catch (Exception ex){
