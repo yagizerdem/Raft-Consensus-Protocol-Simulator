@@ -16,11 +16,14 @@ public class Main {
     public static void main(String[] args) {
         try{
             ArrayList<Integer> peers = new ArrayList<>(
-                    Arrays.stream(Arrays.copyOfRange(args, 1 , args.length))
+                    Arrays.stream(Arrays.copyOfRange(args, 1 , args.length -1))
                     .map(x -> Integer.parseInt(x)).collect(Collectors.toList()));
 
+            int leaderPort = Integer.valueOf(args[args.length -1]);
+            System.out.println(leaderPort);
+
             int serverPort = Integer.parseInt(args[0]);
-            RaftModule raftModule = new RaftModule(serverPort, peers);
+            RaftModule raftModule = new RaftModule(serverPort, peers, leaderPort == serverPort);
 
             raftModule.Start();
 

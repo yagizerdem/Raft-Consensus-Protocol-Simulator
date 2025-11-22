@@ -3,9 +3,11 @@ package Raft;
 import Models.*;
 import RpcModule.Grpc;
 import RpcModule.IRpcHandler;
+import com.sun.jdi.event.ThreadStartEvent;
 
 import javax.swing.*;
 import javax.swing.plaf.TableHeaderUI;
+import javax.swing.text.Style;
 import java.io.PipedReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -34,12 +36,18 @@ public class RaftModule {
 
     private int voteCounter = 0;
 
-    public RaftModule(int serverPort, ArrayList<Integer> peers){
+    public Hashtable<String, AppendEntriesRPCDTO> appendEntriesRpcDtoCache = new Hashtable<>();
+
+    public Hashtable<String, Integer> appendEntryFollowerSocketPort = new Hashtable<>();
+
+    public boolean initAsLeader;
+    public RaftModule(int serverPort, ArrayList<Integer> peers, boolean initAsLeader){
         this.serverPort = serverPort;
         this.peers = peers;
         this.timeOut = this.generateRandomTime();
         this.storage = new Storage(serverPort);
         this.redirectOutput = new RedirectOutput(serverPort);
+        this.initAsLeader = initAsLeader;
 
     }
 
@@ -49,6 +57,36 @@ public class RaftModule {
 
             this.manageTimeout();
             this.manageHeartbeat();
+            this.manageAppendEntries();
+
+            if(this.initAsLeader) {
+                this.storage.setServerLevel(ServerLevel.Leader);
+                this.voteCounter = 0; // reset
+
+                // Initialize leader state
+                Log last = this.storage.getLastLog();
+                long lastIndex = (last != null ? last.index : 0);
+
+                Hashtable<Integer, Integer> next = new Hashtable<Integer, Integer>();
+                Hashtable<Integer, Integer> match = new Hashtable<Integer, Integer>();
+
+                for (int peer : peers) {
+                    next.put(peer, (int)lastIndex + 1);
+                    match.put(peer, 0);
+                }
+
+                synchronized (this.storage.lock) {
+                    this.storage.setNextIndex(next);
+                    this.storage.setMatchIndex(match);
+                }
+
+                System.out.println(this.serverPort + " " +  this.storage.getServerLevel());
+            }
+            else{
+                this.storage.setServerLevel(ServerLevel.Follower);
+            }
+
+
             this.grpc = new Grpc(this.serverPort, new IRpcHandler() {
                 @Override
                 public void handleRequestVoteRpc(RequestVoteRPCDTO requestVoteDto) {
@@ -67,12 +105,12 @@ public class RaftModule {
 
                 @Override
                 public void handleAppendEntriesResponseRpc(AppendEntriesRPCResultDTO appendEntriesResponseDto) {
-
+                    RaftModule.this.handleAppendResponseRpc(appendEntriesResponseDto);
                 }
 
                 @Override
                 public void handleClientCommandRpc(ClientCommandRPCDTO clientCommandDto) {
-
+                    RaftModule.this.handleClientCommandRpc(clientCommandDto);
                 }
             });
         }catch (Exception ex){
@@ -155,6 +193,7 @@ public class RaftModule {
                 this.storage.setMatchIndex(match);
             }
 
+            System.out.println(this.serverPort + " " +  this.storage.getServerLevel());
 
         }
     }
@@ -165,9 +204,140 @@ public class RaftModule {
             this.stepDownFollower(req.term);
         }
 
-        // heartbeat recieved
+        // heartbeat received
         if(req.entries.isEmpty()) {
             this.timeOut = generateRandomTime();
+        }
+
+        AppendEntriesRPCResultDTO result = new AppendEntriesRPCResultDTO();
+        result.term = this.storage.getCurrentTerm();
+        result.traceId = req.traceId;
+
+        // 1. Reply false if term < currentTerm
+        if(req.term < this.storage.getCurrentTerm()) {
+            result.success = false;
+            this.grpc.sendAppendEntriesResponseRpc(Integer.valueOf(req.leaderId), result);
+            return;
+        }
+
+        // 2. Reply false if log doesn’t contain an entry at prevLogIndex whose term matches prevLogTerm
+        if(req.prevLogIndex > 0) {
+            Log prevLog = this.storage.getLogByIndex((int)req.prevLogIndex);
+            if(prevLog == null) {
+                result.success = false;
+                this.grpc.sendAppendEntriesResponseRpc(Integer.valueOf(req.leaderId), result);
+                return;
+            }
+            if(prevLog.term != req.prevLogTerm) {
+                result.success = false;
+                this.grpc.sendAppendEntriesResponseRpc(Integer.valueOf(req.leaderId), result);
+                return;
+            }
+        }
+
+
+        //3. If an existing entry conflicts with a new one(same index but different terms),delete the existing entry and all that follow it
+        for(int j = 0; j < req.entries.size(); j++){
+            Log entry = req.entries.get(j);
+            Log existing = this.storage.getLogByIndex((int)entry.index);
+            if(existing !=  null && existing.term != entry.term){
+                // should delete from logs
+                this.storage.deleteFromIndex((int)entry.index);
+                break;
+            }
+        }
+
+        //4. Append any new entries not already in the log
+        for(int j = 0; j < req.entries.size(); j++){
+            Log entry = req.entries.get(j);
+            this.storage.appendLogEntry(entry);
+        }
+
+        // 5. If leader Commit > commitIndex , set commitIndex= min(leaderCommit, index of last new entry)
+        if(req.leaderCommit > this.storage.getCommitIndex()) {
+            int lastNewIndex;
+
+            if(req.entries.isEmpty()) {
+                Log lastLocal = this.storage.getLastLog();
+                lastNewIndex = (int)(lastLocal == null ? 0 : lastLocal.index);
+            } else {
+                Log lastNew = req.entries.get(req.entries.size() - 1);
+                lastNewIndex = (int)lastNew.index;
+            }
+            if(req.leaderCommit > this.storage.getCommitIndex()) {
+                int newCommitIdx = (int)Math.min(req.leaderCommit, lastNewIndex);
+                this.storage.setCommitIndex(newCommitIdx);
+            }
+        }
+
+        result.success = true;
+        this.grpc.sendAppendEntriesResponseRpc(Integer.valueOf(req.leaderId), result);
+    }
+
+    private void handleAppendResponseRpc(AppendEntriesRPCResultDTO response) {
+
+        synchronized (this.storage.lock) {
+            int follower = appendEntryFollowerSocketPort.get(response.traceId);
+
+            if (response.term > storage.getCurrentTerm()) {
+                stepDownFollower(response.term);
+                return;
+            }
+
+            if (!response.success) {
+                int old = storage.getNextIndex().get(follower);
+                storage.getNextIndex().put(follower, Math.max(old - 1, 1));
+                return;
+            }
+
+            AppendEntriesRPCDTO req = appendEntriesRpcDtoCache.get(response.traceId);
+
+            if (req.entries.isEmpty()) {
+                return;
+            }
+
+            int lastSentIndex = (int)(req.prevLogIndex + req.entries.size());
+
+            storage.getMatchIndex().put(follower, lastSentIndex);
+            storage.getNextIndex().put(follower, lastSentIndex + 1);
+
+            tryCommitEntries();
+        }
+    }
+
+    private void handleClientCommandRpc(ClientCommandRPCDTO dto) {
+        if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
+            Log entry = new Log();
+            entry.term = this.storage.getCurrentTerm();
+            entry.index = this.storage.getLastLog() == null ? 1 :
+                    this.storage.getLastLog().index + 1;
+            entry.shellCommand =  dto.shellCommand;
+            this.storage.appendLogEntry(entry);
+        }
+    }
+
+    private void tryCommitEntries() {
+
+        int N = storage.getLastLog() != null ? (int) storage.getLastLog().index : 0;
+        int majority = (peers.size() + 1) / 2 + 1;
+
+        for (int index = N; index > storage.getCommitIndex(); index--) {
+
+            if (storage.getLogByIndex(index).term != storage.getCurrentTerm()) {
+                continue;
+            }
+
+            int count = 1; // leader
+
+            for (int peer : peers) {
+                if (storage.getMatchIndex().get(peer) >= index)
+                    count++;
+            }
+
+            if (count >= majority) {
+                storage.setCommitIndex(index);
+                return;
+            }
         }
     }
 
@@ -219,21 +389,83 @@ public class RaftModule {
         new Thread(() ->{
             while (true) {
                 try{
-                    System.out.println(this.serverPort + " " +  this.storage.getServerLevel());
                     // only leader can send heartbeat
                     if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
-                        for(int peer : this.peers){
+                        for(int i = 0; i < peers.size(); i++){
+                            int peer = peers.get(i);
+                            Integer nextLogIndex = this.storage.getNextIndex().get(peer);
+
                             AppendEntriesRPCDTO dto = new AppendEntriesRPCDTO();
                             dto.term = this.storage.getCurrentTerm();
-                            dto.entries = new ArrayList<>();
                             dto.traceId = generateUUid();
+                            dto.leaderId = String.valueOf(this.serverPort);
+                            dto.leaderCommit = this.storage.getCommitIndex();
+                            dto.prevLogIndex = nextLogIndex -1 ;
 
-                            this.grpc.sendAppendEntriesRpc(peer, dto);
+                            Log prevLog = this.storage.getLogByIndex(nextLogIndex - 1);
+                            dto.prevLogTerm = prevLog == null ? 0 : prevLog.term;
+                            // bullet proof entries selection code -> gpt generated
+                            int lastIndex = this.storage.getLogs().size();
+
+                            dto.entries = new ArrayList<>();
+
+                            this.appendEntriesRpcDtoCache.put(dto.traceId, dto);
+                            this.appendEntryFollowerSocketPort.put(dto.traceId, peer);
+                            this.grpc.sendAppendEntriesRpc(peer,  dto);
                         }
                     }
 
                     Thread.sleep((int)this.timeFragment);
                 }catch (Exception ex){
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }).start();
+    }
+
+    public void manageAppendEntries(){
+        new Thread(() ->{
+            while (true){
+                try{
+
+                    if(!this.storage.getServerLevel().equals(ServerLevel.Leader)) {
+                        Thread.sleep((int)this.timeFragment);
+                        continue;
+                    }
+                    System.out.println("hit 2");
+
+                    for(int i = 0; i < peers.size(); i++){
+                        int peer = peers.get(i);
+                        Integer nextLogIndex = this.storage.getNextIndex().get(peer);
+
+                        AppendEntriesRPCDTO dto = new AppendEntriesRPCDTO();
+                        dto.term = this.storage.getCurrentTerm();
+                        dto.traceId = generateUUid();
+                        dto.leaderId = String.valueOf(this.serverPort);
+                        dto.leaderCommit = this.storage.getCommitIndex();
+                        dto.prevLogIndex = nextLogIndex -1 ;
+
+                        Log prevLog = this.storage.getLogByIndex(nextLogIndex - 1);
+                        dto.prevLogTerm = prevLog == null ? 0 : prevLog.term;
+                        // bullet proof entries selection code -> gpt generated
+                        int lastIndex = this.storage.getLogs().size();
+
+                        if (nextLogIndex <= lastIndex) {
+                            dto.entries = new ArrayList<>(
+                                    this.storage.getLogs().subList(nextLogIndex -1, lastIndex)
+                            );
+                        } else {
+                            dto.entries = new ArrayList<>();
+                        }
+
+                        this.appendEntriesRpcDtoCache.put(dto.traceId, dto);
+                        this.appendEntryFollowerSocketPort.put(dto.traceId, peer);
+                        this.grpc.sendAppendEntriesRpc(peer,  dto);
+
+                    }
+
+                    Thread.sleep((int)this.timeFragment);
+                }catch (Exception ex) {
                     System.out.println(ex.getMessage());
                 }
             }
@@ -256,9 +488,6 @@ public class RaftModule {
             this.storage.setCurrentTerm(newTerm);
         }
     }
-
-
-
     private void sendVote(RequestVoteRPCDTO req, boolean granted) {
         RequestVoteResultRPCDTO res = new RequestVoteResultRPCDTO();
         res.traceId = req.traceId;
@@ -268,4 +497,6 @@ public class RaftModule {
         this.grpc.sendRequestVoteResponseRpc(
                 Integer.parseInt(req.candidateId), res);
     }
+
+
 }

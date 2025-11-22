@@ -68,7 +68,8 @@ public class Storage {
 
         // initialize with logs
         if(Files.exists(Path.of(logUri))) {
-            ArrayList<Log> logs = this.readAllLogs();
+            this.logs  = this.readAllLogs();
+
         }
 
     }
@@ -280,6 +281,13 @@ public class Storage {
         int offset = idx -1;
         if(offset < 0 || offset >= this.logs.size()) return null;
         return  this.logs.get(offset);
+    }
+
+    public void deleteFromIndex(int idx){
+        int offset = idx -1;
+        if(offset < 0 || offset >= this.logs.size()) return ;
+        this.logs = new ArrayList<>(this.logs.subList(0, offset));
+        overwriteLogs(this.logs);
     }
 
 }

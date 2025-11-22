@@ -1,4 +1,0 @@
-{
-	"currentTerm" : "14",
-	"votedFor" : "9002"
-}
