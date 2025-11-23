@@ -1,4 +1,0 @@
-0|1|type nul > test.txt
-0|2|echo denem yaz?s? bu > test.txt
-0|3|type test.txt
-1|4|echo yagiz erdem 2022510117 >> test.txt
