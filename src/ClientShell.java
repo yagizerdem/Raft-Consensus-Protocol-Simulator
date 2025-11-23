@@ -25,6 +25,8 @@ public class ClientShell {
 
     private static int defaultShellCommandIdx = 0;
 
+    private static Boolean backpressureInit = false;
+
     public static void main(String[] args) {
 
         port = Integer.valueOf(args[0]);
@@ -68,6 +70,7 @@ public class ClientShell {
 
         String peersArg = null;
         String defaultInput = null;
+        backpressureInit = false;
 
         for (String arg : args) {
             if (arg.startsWith("-peers=")) {
@@ -75,6 +78,9 @@ public class ClientShell {
             }
             if (arg.startsWith("-defaultInput=")) {
                 defaultInput = arg.substring("-defaultInput=".length());
+            }
+            if (arg.startsWith("-backpressureInit=")) {
+                backpressureInit = Boolean.valueOf(arg.substring("-backpressureInit=".length()));
             }
         }
 
@@ -107,9 +113,15 @@ public class ClientShell {
             System.out.println("Default input file found executing default inputs !");
         }
 
+        // wait for leader initialization
+       try{
+           Thread.sleep(500);
+       }catch (Exception ex) {
+           System.out.println(ex.getMessage());
+       }
         while (defaultShellCommandIdx < defaultShellCommands.size()) {
             try {
-                Thread.sleep(50);
+                if(!backpressureInit) Thread.sleep(50);
                 String shellCommand = defaultShellCommands.get(defaultShellCommandIdx);
                 if (waitResponse) continue;
 
@@ -126,7 +138,7 @@ public class ClientShell {
                 normalizedShellCommand = normalizedShellCommand.trim();
 
                 System.out.println("Shell command to execute : " + normalizedShellCommand);
-                waitResponse = true;
+                if(!backpressureInit) waitResponse = true;
 
                 for (Integer peer : peers) {
                     ClientCommandRPCDTO commandDto = new ClientCommandRPCDTO();
@@ -143,6 +155,8 @@ public class ClientShell {
             }
 
         }
+
+        waitResponse = false;
 
         new Thread(() -> {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {

@@ -14,9 +14,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
 import java.util.UUID;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class RaftModule {
 
@@ -52,6 +50,8 @@ public class RaftModule {
 
     private final ExecutorService exec = Executors.newSingleThreadExecutor();
 
+    private final BlockingQueue<ClientCommandRPCDTO> clientQueue = new LinkedBlockingQueue<>();
+
     public RaftModule(int serverPort, ArrayList<Integer> peers, boolean initAsLeader, int clientPort){
         this.serverPort = serverPort;
         this.peers = peers;
@@ -72,6 +72,7 @@ public class RaftModule {
             this.manageHeartbeat();
             this.manageAppendEntries();
             this.manageStateMachine();
+            this.manageClientRequestQueue();
 
             if(this.initAsLeader) {
                 this.storage.setServerLevel(ServerLevel.Leader);
@@ -524,33 +525,9 @@ public class RaftModule {
     }
 
     private void handleClientCommandRpc(ClientCommandRPCDTO dto) {
-        this.redirectOutput.WriteCout(
-                "[ClientCommand RPC] RECEIVED\n" +
-                        "  clientPort=" + dto.clientPort + "\n" +
-                        "  shellCommand=\"" + dto.shellCommand + "\"\n" +
-                        "  serverRole=" + this.storage.getServerLevel()
-        );
-
-        if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
-            Log entry = new Log();
-            entry.term = this.storage.getCurrentTerm();
-            entry.index = this.storage.getLastLog() == null ? 1 :
-                    this.storage.getLastLog().index + 1;
-            entry.shellCommand =  dto.shellCommand;
-            this.storage.appendLogEntry(entry);
-
-            this.redirectOutput.WriteCout(
-                    "[ClientCommand RPC] ACCEPTED & LOGGED\n" +
-                            "  logIndex=" + entry.index + "\n" +
-                            "  term=" + entry.term
-            );
-        }
-        else{
-            this.redirectOutput.WriteCout(
-                    "[ClientCommand RPC] IGNORED -> this server is not LEADER"
-            );
-        }
+        clientQueue.add(dto);
     }
+
 
 
     private void tryCommitEntries() {
@@ -881,7 +858,7 @@ public class RaftModule {
                         // propogate response back to client
                         ClientCommandRPCResultDTO dto = new ClientCommandRPCResultDTO();
                         dto.setSuccess(exitCode == 0);
-                        dto.setCommitIndex(this.storage.getCommitIndex());
+                        dto.setCommitIndex((int)currentLog.index);
                         if(exitCode == 0){
                             dto.setMessage("shell command applied successfully ! redirecting output : " + output);
                         }
@@ -912,6 +889,49 @@ public class RaftModule {
                 }
             }
         }).start();
+    }
+
+    public void manageClientRequestQueue(){
+        new Thread(() -> {
+            while (true) {
+                if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
+                    try {
+                        ClientCommandRPCDTO dto = clientQueue.take(); // blocking
+                        appendCommandIntoLog(dto);
+                    }
+                    catch (Exception ex) { }
+                }
+            }
+        }).start();
+    }
+    private void appendCommandIntoLog(ClientCommandRPCDTO dto) {
+
+        this.redirectOutput.WriteCout(
+                "[ClientCommand RPC] RECEIVED\n" +
+                        "  clientPort=" + dto.clientPort + "\n" +
+                        "  shellCommand=\"" + dto.shellCommand + "\"\n" +
+                        "  serverRole=" + this.storage.getServerLevel()
+        );
+
+        if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
+            Log entry = new Log();
+            entry.term = this.storage.getCurrentTerm();
+            entry.index = this.storage.getLastLog() == null ? 1 :
+                    this.storage.getLastLog().index + 1;
+            entry.shellCommand =  dto.shellCommand;
+            this.storage.appendLogEntry(entry);
+
+            this.redirectOutput.WriteCout(
+                    "[ClientCommand RPC] ACCEPTED & LOGGED\n" +
+                            "  logIndex=" + entry.index + "\n" +
+                            "  term=" + entry.term
+            );
+        }
+        else{
+            this.redirectOutput.WriteCout(
+                    "[ClientCommand RPC] IGNORED -> this server is not LEADER"
+            );
+        }
     }
 
     // auxilary

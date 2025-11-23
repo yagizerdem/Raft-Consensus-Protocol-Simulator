@@ -6,5 +6,3 @@ start cmd /k java -cp ./out/production/raft Main 9001 9000 9002 9000 8000
 start cmd /k java -cp ./out/production/raft Main 9002 9000 9001 9000 8000
 
 start cmd /k java -cp ./out/production/raft ClientShell 8000 -peers=9000,9001,9002
-
-pause

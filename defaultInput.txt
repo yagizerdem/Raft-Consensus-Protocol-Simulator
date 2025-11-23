@@ -125,5 +125,3 @@ if %errorlevel%==0 (
 ) else (
     echo Compile FAILED!
 )
-
-pause

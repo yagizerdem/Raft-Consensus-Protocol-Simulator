@@ -26,4 +26,3 @@ if %errorlevel%==0 (
     echo Compile FAILED!
 )
 
-pause
