@@ -101,5 +101,7 @@ public class ClientShell {
         waitResponse = false;
         System.out.println(String.format("commit index : %s | leader server response : %s ", dto.getCommitIndex()
                 , dto.getMessage()));
+
+        System.out.println("-".repeat(20));
     }
 }

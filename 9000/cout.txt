@@ -1,0 +1,1866 @@
+[2025-11-23T17:10:46.5962445] [StateMachine] APPLYING LOG ENTRY
+  index=1
+  term=0
+  command="type nul > test.txt"
+[2025-11-23T17:10:46.5962445] [Timeout] ticking -> 2446.321 -> 1946.321
+[2025-11-23T17:10:46.6005314] Initialized server authority level as : Leader
+[2025-11-23T17:10:46.6594594] [StateMachine] COMMAND EXECUTED -> exitCode=0
+[2025-11-23T17:10:46.6604685] [StateMachine] Sending command result back to client...
+[2025-11-23T17:10:46.9735709] [AppendEntries RPC RECEIVED] from leader=9001 traceId=a592b110-8652-4e39-9140-d9f6fe169e68 term=1 prevLogIndex=3 prevLogTerm=0 entries=1 leaderCommit=4
+[2025-11-23T17:10:46.9735709] [AppendEntries RPC RECEIVED] from leader=9001 traceId=7099dab9-a66b-4e04-840d-1fe3768fd1f8 term=1 prevLogIndex=3 prevLogTerm=0 entries=0 leaderCommit=4
+[2025-11-23T17:10:46.9833423] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=7099dab9-a66b-4e04-840d-1fe3768fd1f8
+  term=1
+  prevLogIndex=3
+  prevLogTerm=0
+  entriesCount=0
+  leaderCommit=4
+  myTerm=0
+  myCommitIndex=0
+[2025-11-23T17:10:46.9833423] [AppendEntries RPC] Newer term detected -> stepping down to FOLLOWER
+[2025-11-23T17:10:46.9833423] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=a592b110-8652-4e39-9140-d9f6fe169e68
+  term=1
+  prevLogIndex=3
+  prevLogTerm=0
+  entriesCount=1
+  leaderCommit=4
+  myTerm=0
+  myCommitIndex=0
+[2025-11-23T17:10:46.9843497] [AppendEntries RPC] Newer term detected -> stepping down to FOLLOWER
+[2025-11-23T17:10:46.9843497] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:46.9863391] [AppendEntries RPC] Updating commitIndex -> 0 -> 3
+[2025-11-23T17:10:46.9863391] [AppendEntries RPC] SUCCESS -> Sending response (traceId=7099dab9-a66b-4e04-840d-1fe3768fd1f8)
+[2025-11-23T17:10:46.9873354] [AppendEntries RPC] Appending entry -> index=4, term=1
+[2025-11-23T17:10:46.9984303] [AppendEntries RPC] Updating commitIndex -> 3 -> 4
+[2025-11-23T17:10:46.999427] [AppendEntries RPC] SUCCESS -> Sending response (traceId=a592b110-8652-4e39-9140-d9f6fe169e68)
+[2025-11-23T17:10:47.1064682] [Timeout] ticking -> 2918.2886 -> 2418.2886
+[2025-11-23T17:10:47.4658215] [AppendEntries RPC RECEIVED] from leader=9001 traceId=4c94fb8d-d652-4a3f-b52a-c7d777819f9c term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:47.4658215] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=4c94fb8d-d652-4a3f-b52a-c7d777819f9c
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:47.4658215] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:47.4658215] [AppendEntries RPC] SUCCESS -> Sending response (traceId=4c94fb8d-d652-4a3f-b52a-c7d777819f9c)
+[2025-11-23T17:10:47.4816727] [AppendEntries RPC RECEIVED] from leader=9001 traceId=72ee9dce-0a9f-422c-850d-84203d713754 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:47.4816727] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=72ee9dce-0a9f-422c-850d-84203d713754
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:47.4816727] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:47.4816727] [AppendEntries RPC] SUCCESS -> Sending response (traceId=72ee9dce-0a9f-422c-850d-84203d713754)
+[2025-11-23T17:10:47.6195902] [Timeout] ticking -> 7689.2627 -> 7189.2627
+[2025-11-23T17:10:47.9809213] [AppendEntries RPC RECEIVED] from leader=9001 traceId=4b017c33-8d05-4e31-b658-8f09018464df term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:47.9819143] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=4b017c33-8d05-4e31-b658-8f09018464df
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:47.9819143] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:47.9819143] [AppendEntries RPC] SUCCESS -> Sending response (traceId=4b017c33-8d05-4e31-b658-8f09018464df)
+[2025-11-23T17:10:47.9957679] [AppendEntries RPC RECEIVED] from leader=9001 traceId=6939ba0d-551f-4089-a3b3-a4748aced3af term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:47.9957679] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=6939ba0d-551f-4089-a3b3-a4748aced3af
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:47.9957679] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:47.9957679] [AppendEntries RPC] SUCCESS -> Sending response (traceId=6939ba0d-551f-4089-a3b3-a4748aced3af)
+[2025-11-23T17:10:48.1346986] [Timeout] ticking -> 5382.813 -> 4882.813
+[2025-11-23T17:10:48.181704] [StateMachine] APPLYING LOG ENTRY
+  index=2
+  term=0
+  command="echo denem yaz?s? bu > test.txt"
+[2025-11-23T17:10:48.2383524] [StateMachine] COMMAND EXECUTED -> exitCode=0
+[2025-11-23T17:10:48.4968168] [AppendEntries RPC RECEIVED] from leader=9001 traceId=5fc5f0c7-52d1-4dd1-a9c7-99b564dcd42d term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:48.4968168] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=5fc5f0c7-52d1-4dd1-a9c7-99b564dcd42d
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:48.4968168] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:48.4968168] [AppendEntries RPC] SUCCESS -> Sending response (traceId=5fc5f0c7-52d1-4dd1-a9c7-99b564dcd42d)
+[2025-11-23T17:10:48.5110984] [AppendEntries RPC RECEIVED] from leader=9001 traceId=e3b11c6e-e0b6-4f55-bb5d-23c492b4f326 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:48.5110984] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=e3b11c6e-e0b6-4f55-bb5d-23c492b4f326
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:48.5110984] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:48.5110984] [AppendEntries RPC] SUCCESS -> Sending response (traceId=e3b11c6e-e0b6-4f55-bb5d-23c492b4f326)
+[2025-11-23T17:10:48.6475065] [Timeout] ticking -> 4080.343 -> 3580.343
+[2025-11-23T17:10:49.0093501] [AppendEntries RPC RECEIVED] from leader=9001 traceId=5287a645-d3ce-47fa-90b7-1850d4f76d8b term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:49.0093501] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=5287a645-d3ce-47fa-90b7-1850d4f76d8b
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:49.0093501] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:49.0093501] [AppendEntries RPC] SUCCESS -> Sending response (traceId=5287a645-d3ce-47fa-90b7-1850d4f76d8b)
+[2025-11-23T17:10:49.0237123] [AppendEntries RPC RECEIVED] from leader=9001 traceId=891bb052-b50a-4ca9-8684-b60daecb7c74 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:49.0237123] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=891bb052-b50a-4ca9-8684-b60daecb7c74
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:49.0237123] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:49.0237123] [AppendEntries RPC] SUCCESS -> Sending response (traceId=891bb052-b50a-4ca9-8684-b60daecb7c74)
+[2025-11-23T17:10:49.162464] [Timeout] ticking -> 3038.9785 -> 2538.9785
+[2025-11-23T17:10:49.5221436] [AppendEntries RPC RECEIVED] from leader=9001 traceId=3ffc2c8e-a899-4626-a313-431913d11762 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:49.5221436] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=3ffc2c8e-a899-4626-a313-431913d11762
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:49.5231567] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:49.5231567] [AppendEntries RPC] SUCCESS -> Sending response (traceId=3ffc2c8e-a899-4626-a313-431913d11762)
+[2025-11-23T17:10:49.5377426] [AppendEntries RPC RECEIVED] from leader=9001 traceId=cfff0a10-7c9c-47cc-ba6d-6055cac91362 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:49.5377426] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=cfff0a10-7c9c-47cc-ba6d-6055cac91362
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:49.5377426] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:49.5377426] [AppendEntries RPC] SUCCESS -> Sending response (traceId=cfff0a10-7c9c-47cc-ba6d-6055cac91362)
+[2025-11-23T17:10:49.6777093] [Timeout] ticking -> 5283.804 -> 4783.804
+[2025-11-23T17:10:49.7394542] [StateMachine] APPLYING LOG ENTRY
+  index=3
+  term=0
+  command="type test.txt"
+[2025-11-23T17:10:49.7906138] [StateMachine] COMMAND EXECUTED -> exitCode=0
+[2025-11-23T17:10:50.0255337] [AppendEntries RPC RECEIVED] from leader=9001 traceId=f12d6cfc-f993-40b2-8c60-e85e28f92044 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:50.0255337] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=f12d6cfc-f993-40b2-8c60-e85e28f92044
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:50.0255337] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:50.0255337] [AppendEntries RPC] SUCCESS -> Sending response (traceId=f12d6cfc-f993-40b2-8c60-e85e28f92044)
+[2025-11-23T17:10:50.0536723] [AppendEntries RPC RECEIVED] from leader=9001 traceId=5f713567-c6ca-4cb9-ae14-24fadeeed4dd term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:50.0536723] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=5f713567-c6ca-4cb9-ae14-24fadeeed4dd
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:50.0536723] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:50.0536723] [AppendEntries RPC] SUCCESS -> Sending response (traceId=5f713567-c6ca-4cb9-ae14-24fadeeed4dd)
+[2025-11-23T17:10:50.1917768] [Timeout] ticking -> 4343.8423 -> 3843.8423
+[2025-11-23T17:10:50.5382895] [AppendEntries RPC RECEIVED] from leader=9001 traceId=a56746db-acfe-46aa-9f45-6f8a01dc89fe term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:50.5382895] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=a56746db-acfe-46aa-9f45-6f8a01dc89fe
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:50.5382895] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:50.5392941] [AppendEntries RPC] SUCCESS -> Sending response (traceId=a56746db-acfe-46aa-9f45-6f8a01dc89fe)
+[2025-11-23T17:10:50.5577974] [AppendEntries RPC RECEIVED] from leader=9001 traceId=c44c543b-2e64-4fcc-aaf5-effed31090c1 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:50.5577974] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=c44c543b-2e64-4fcc-aaf5-effed31090c1
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:50.5577974] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:50.559315] [AppendEntries RPC] SUCCESS -> Sending response (traceId=c44c543b-2e64-4fcc-aaf5-effed31090c1)
+[2025-11-23T17:10:50.7060143] [Timeout] ticking -> 5680.827 -> 5180.827
+[2025-11-23T17:10:51.0523971] [AppendEntries RPC RECEIVED] from leader=9001 traceId=ff15211c-c319-486a-b1c3-c1f18db8d01e term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:51.0523971] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=ff15211c-c319-486a-b1c3-c1f18db8d01e
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:51.0523971] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:51.0523971] [AppendEntries RPC] SUCCESS -> Sending response (traceId=ff15211c-c319-486a-b1c3-c1f18db8d01e)
+[2025-11-23T17:10:51.0680473] [AppendEntries RPC RECEIVED] from leader=9001 traceId=56b40a17-e9d3-4683-bb1e-8af5f86cded0 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:51.0680473] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=56b40a17-e9d3-4683-bb1e-8af5f86cded0
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:51.0680473] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:51.0680473] [AppendEntries RPC] SUCCESS -> Sending response (traceId=56b40a17-e9d3-4683-bb1e-8af5f86cded0)
+[2025-11-23T17:10:51.2202859] [Timeout] ticking -> 6278.1304 -> 5778.1304
+[2025-11-23T17:10:51.2963015] [StateMachine] APPLYING LOG ENTRY
+  index=4
+  term=1
+  command="echo yagiz erdem 2022510117 >> test.txt"
+[2025-11-23T17:10:51.3425397] [StateMachine] COMMAND EXECUTED -> exitCode=0
+[2025-11-23T17:10:51.5644233] [AppendEntries RPC RECEIVED] from leader=9001 traceId=2bf5ef73-3a18-4e6c-b77d-8419cc9eae4a term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:51.5644233] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=2bf5ef73-3a18-4e6c-b77d-8419cc9eae4a
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:51.5644233] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:51.5644233] [AppendEntries RPC] SUCCESS -> Sending response (traceId=2bf5ef73-3a18-4e6c-b77d-8419cc9eae4a)
+[2025-11-23T17:10:51.5796266] [AppendEntries RPC RECEIVED] from leader=9001 traceId=3d1a9ca8-5273-4358-bcee-6c3d41b3f794 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:51.5796266] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=3d1a9ca8-5273-4358-bcee-6c3d41b3f794
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:51.5796266] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:51.5796266] [AppendEntries RPC] SUCCESS -> Sending response (traceId=3d1a9ca8-5273-4358-bcee-6c3d41b3f794)
+[2025-11-23T17:10:51.7305127] [Timeout] ticking -> 4446.741 -> 3946.7412
+[2025-11-23T17:10:52.074378] [AppendEntries RPC RECEIVED] from leader=9001 traceId=fe49f458-23d5-4091-80b4-5a3ea8b4bb50 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:52.074378] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=fe49f458-23d5-4091-80b4-5a3ea8b4bb50
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:52.074378] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:52.074378] [AppendEntries RPC] SUCCESS -> Sending response (traceId=fe49f458-23d5-4091-80b4-5a3ea8b4bb50)
+[2025-11-23T17:10:52.0893879] [AppendEntries RPC RECEIVED] from leader=9001 traceId=0910050a-ffe2-4642-9251-c0ff34b5c8bf term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:52.0893879] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=0910050a-ffe2-4642-9251-c0ff34b5c8bf
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:52.0893879] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:52.0893879] [AppendEntries RPC] SUCCESS -> Sending response (traceId=0910050a-ffe2-4642-9251-c0ff34b5c8bf)
+[2025-11-23T17:10:52.2415926] [Timeout] ticking -> 4062.539 -> 3562.539
+[2025-11-23T17:10:52.5859537] [AppendEntries RPC RECEIVED] from leader=9001 traceId=569d9485-704f-4abf-913a-50c99ba10bb9 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:52.5859537] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=569d9485-704f-4abf-913a-50c99ba10bb9
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:52.5859537] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:52.5859537] [AppendEntries RPC] SUCCESS -> Sending response (traceId=569d9485-704f-4abf-913a-50c99ba10bb9)
+[2025-11-23T17:10:52.6004081] [AppendEntries RPC RECEIVED] from leader=9001 traceId=c5179f0b-0e45-4e2e-a8ea-61d7f4033e87 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:52.6004081] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=c5179f0b-0e45-4e2e-a8ea-61d7f4033e87
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:52.6004081] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:52.6004081] [AppendEntries RPC] SUCCESS -> Sending response (traceId=c5179f0b-0e45-4e2e-a8ea-61d7f4033e87)
+[2025-11-23T17:10:52.7546073] [Timeout] ticking -> 7914.36 -> 7414.36
+[2025-11-23T17:10:53.1026148] [AppendEntries RPC RECEIVED] from leader=9001 traceId=af8d3f48-5431-4751-9446-3e7ab2853737 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:53.1026148] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=af8d3f48-5431-4751-9446-3e7ab2853737
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:53.1026148] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:53.1026148] [AppendEntries RPC] SUCCESS -> Sending response (traceId=af8d3f48-5431-4751-9446-3e7ab2853737)
+[2025-11-23T17:10:53.1036233] [AppendEntries RPC RECEIVED] from leader=9001 traceId=0672f715-2183-49e8-b00d-c99b2fa55317 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:53.1036233] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=0672f715-2183-49e8-b00d-c99b2fa55317
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:53.1036233] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:53.1036233] [AppendEntries RPC] SUCCESS -> Sending response (traceId=0672f715-2183-49e8-b00d-c99b2fa55317)
+[2025-11-23T17:10:53.257212] [Timeout] ticking -> 2699.648 -> 2199.648
+[2025-11-23T17:10:53.6144261] [AppendEntries RPC RECEIVED] from leader=9001 traceId=0c6804f2-8020-49bc-8a13-78c49e2b39d0 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:53.6144261] [AppendEntries RPC RECEIVED] from leader=9001 traceId=21d94387-7d4a-44f1-b9ae-1094b417f4f8 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:53.6144261] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=0c6804f2-8020-49bc-8a13-78c49e2b39d0
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:53.6144261] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:53.6144261] [AppendEntries RPC] SUCCESS -> Sending response (traceId=0c6804f2-8020-49bc-8a13-78c49e2b39d0)
+[2025-11-23T17:10:53.6144261] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=21d94387-7d4a-44f1-b9ae-1094b417f4f8
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:53.6153402] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:53.6153402] [AppendEntries RPC] SUCCESS -> Sending response (traceId=21d94387-7d4a-44f1-b9ae-1094b417f4f8)
+[2025-11-23T17:10:53.7678027] [Timeout] ticking -> 6381.4297 -> 5881.4297
+[2025-11-23T17:10:54.1267274] [AppendEntries RPC RECEIVED] from leader=9001 traceId=a4db7362-6754-4735-bf8c-7f1f7ecbb20f term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:54.1267274] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=a4db7362-6754-4735-bf8c-7f1f7ecbb20f
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:54.1267274] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:54.1267274] [AppendEntries RPC] SUCCESS -> Sending response (traceId=a4db7362-6754-4735-bf8c-7f1f7ecbb20f)
+[2025-11-23T17:10:54.1277416] [AppendEntries RPC RECEIVED] from leader=9001 traceId=a3799c3d-9447-42cd-9d47-f15ab72b21e3 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:54.1277416] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=a3799c3d-9447-42cd-9d47-f15ab72b21e3
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:54.1277416] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:54.1277416] [AppendEntries RPC] SUCCESS -> Sending response (traceId=a3799c3d-9447-42cd-9d47-f15ab72b21e3)
+[2025-11-23T17:10:54.2814779] [Timeout] ticking -> 3388.5034 -> 2888.5034
+[2025-11-23T17:10:54.6418997] [AppendEntries RPC RECEIVED] from leader=9001 traceId=e400e8b2-b301-4a59-ae5a-7cc7c4dadc6d term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:54.6418997] [AppendEntries RPC RECEIVED] from leader=9001 traceId=e9330d47-7a81-4395-a075-58873545940a term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:54.6418997] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=e400e8b2-b301-4a59-ae5a-7cc7c4dadc6d
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:54.6418997] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=e9330d47-7a81-4395-a075-58873545940a
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:54.6428943] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:54.6428943] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:54.6428943] [AppendEntries RPC] SUCCESS -> Sending response (traceId=e9330d47-7a81-4395-a075-58873545940a)
+[2025-11-23T17:10:54.6428943] [AppendEntries RPC] SUCCESS -> Sending response (traceId=e400e8b2-b301-4a59-ae5a-7cc7c4dadc6d)
+[2025-11-23T17:10:54.7959165] [Timeout] ticking -> 5615.3086 -> 5115.3086
+[2025-11-23T17:10:55.1600173] [AppendEntries RPC RECEIVED] from leader=9001 traceId=ed0417b9-56ac-475c-aa7e-9e03d432772b term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:55.1600173] [AppendEntries RPC RECEIVED] from leader=9001 traceId=b47ad381-d52d-4c8d-9a27-f47342a41bbd term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:55.1600173] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=ed0417b9-56ac-475c-aa7e-9e03d432772b
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:55.1600173] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=b47ad381-d52d-4c8d-9a27-f47342a41bbd
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:55.1600173] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:55.1600173] [AppendEntries RPC] SUCCESS -> Sending response (traceId=b47ad381-d52d-4c8d-9a27-f47342a41bbd)
+[2025-11-23T17:10:55.1600173] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:55.1600173] [AppendEntries RPC] SUCCESS -> Sending response (traceId=ed0417b9-56ac-475c-aa7e-9e03d432772b)
+[2025-11-23T17:10:55.306357] [Timeout] ticking -> 6817.918 -> 6317.918
+[2025-11-23T17:10:55.6643017] [AppendEntries RPC RECEIVED] from leader=9001 traceId=816b73ae-1a71-4146-b3f5-cd83881696f7 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:55.6643017] [AppendEntries RPC RECEIVED] from leader=9001 traceId=ddbada30-df6c-4c2d-ac32-d273573906f6 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:55.6643017] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=816b73ae-1a71-4146-b3f5-cd83881696f7
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:55.6643017] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:55.6653033] [AppendEntries RPC] SUCCESS -> Sending response (traceId=816b73ae-1a71-4146-b3f5-cd83881696f7)
+[2025-11-23T17:10:55.6643017] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=ddbada30-df6c-4c2d-ac32-d273573906f6
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:55.6653033] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:55.6653033] [AppendEntries RPC] SUCCESS -> Sending response (traceId=ddbada30-df6c-4c2d-ac32-d273573906f6)
+[2025-11-23T17:10:55.818345] [Timeout] ticking -> 2110.7085 -> 1610.7085
+[2025-11-23T17:10:56.1763163] [AppendEntries RPC RECEIVED] from leader=9001 traceId=978c236d-9b92-4fe5-b70c-6d4329bed463 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:56.1763163] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=978c236d-9b92-4fe5-b70c-6d4329bed463
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:56.1763163] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:56.1763163] [AppendEntries RPC] SUCCESS -> Sending response (traceId=978c236d-9b92-4fe5-b70c-6d4329bed463)
+[2025-11-23T17:10:56.1773075] [AppendEntries RPC RECEIVED] from leader=9001 traceId=2a197500-17d5-4621-b8e8-7a2d66526df6 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:56.1773075] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=2a197500-17d5-4621-b8e8-7a2d66526df6
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:56.1773075] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:56.1773075] [AppendEntries RPC] SUCCESS -> Sending response (traceId=2a197500-17d5-4621-b8e8-7a2d66526df6)
+[2025-11-23T17:10:56.331479] [Timeout] ticking -> 3491.0066 -> 2991.0066
+[2025-11-23T17:10:56.6907983] [AppendEntries RPC RECEIVED] from leader=9001 traceId=cd07e900-cc0e-4a5e-95c2-249b2d401280 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:56.6907983] [AppendEntries RPC RECEIVED] from leader=9001 traceId=25102d0e-7d03-4eda-a67d-ec079dd312f2 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:56.6917952] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=cd07e900-cc0e-4a5e-95c2-249b2d401280
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:56.6917952] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:56.6917952] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=25102d0e-7d03-4eda-a67d-ec079dd312f2
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:56.6917952] [AppendEntries RPC] SUCCESS -> Sending response (traceId=cd07e900-cc0e-4a5e-95c2-249b2d401280)
+[2025-11-23T17:10:56.6917952] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:56.6917952] [AppendEntries RPC] SUCCESS -> Sending response (traceId=25102d0e-7d03-4eda-a67d-ec079dd312f2)
+[2025-11-23T17:10:56.8431145] [Timeout] ticking -> 2146.603 -> 1646.603
+[2025-11-23T17:10:57.2017823] [AppendEntries RPC RECEIVED] from leader=9001 traceId=834c46e2-5a9e-4b0d-bc90-34bf13b4de66 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:57.2017823] [AppendEntries RPC RECEIVED] from leader=9001 traceId=e3bc2ad4-8aff-46f5-ab08-9f1a3f9a904f term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:57.2017823] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=834c46e2-5a9e-4b0d-bc90-34bf13b4de66
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:57.2017823] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:57.2017823] [AppendEntries RPC] SUCCESS -> Sending response (traceId=834c46e2-5a9e-4b0d-bc90-34bf13b4de66)
+[2025-11-23T17:10:57.2017823] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=e3bc2ad4-8aff-46f5-ab08-9f1a3f9a904f
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:57.2017823] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:57.2017823] [AppendEntries RPC] SUCCESS -> Sending response (traceId=e3bc2ad4-8aff-46f5-ab08-9f1a3f9a904f)
+[2025-11-23T17:10:57.3517374] [Timeout] ticking -> 2567.479 -> 2067.479
+[2025-11-23T17:10:57.7118993] [AppendEntries RPC RECEIVED] from leader=9001 traceId=bdb2bf58-7c5c-4818-83cf-cee6df4f9ac5 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:57.7118993] [AppendEntries RPC RECEIVED] from leader=9001 traceId=6066972f-70b2-4a98-84b3-0487a22df7d0 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:57.7118993] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=bdb2bf58-7c5c-4818-83cf-cee6df4f9ac5
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:57.7129011] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:57.7129011] [AppendEntries RPC] SUCCESS -> Sending response (traceId=bdb2bf58-7c5c-4818-83cf-cee6df4f9ac5)
+[2025-11-23T17:10:57.7129011] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=6066972f-70b2-4a98-84b3-0487a22df7d0
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:57.7129011] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:57.7129011] [AppendEntries RPC] SUCCESS -> Sending response (traceId=6066972f-70b2-4a98-84b3-0487a22df7d0)
+[2025-11-23T17:10:57.8653108] [Timeout] ticking -> 5866.095 -> 5366.095
+[2025-11-23T17:10:58.2264948] [AppendEntries RPC RECEIVED] from leader=9001 traceId=54147ab3-5dca-48ab-a48c-d0c590c956fc term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:58.2264948] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=54147ab3-5dca-48ab-a48c-d0c590c956fc
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:58.2264948] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:58.2264948] [AppendEntries RPC] SUCCESS -> Sending response (traceId=54147ab3-5dca-48ab-a48c-d0c590c956fc)
+[2025-11-23T17:10:58.2274933] [AppendEntries RPC RECEIVED] from leader=9001 traceId=fdc799a0-2835-4b09-81c9-5473a0f1d885 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:58.2284921] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=fdc799a0-2835-4b09-81c9-5473a0f1d885
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:58.2284921] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:58.2284921] [AppendEntries RPC] SUCCESS -> Sending response (traceId=fdc799a0-2835-4b09-81c9-5473a0f1d885)
+[2025-11-23T17:10:58.3783181] [Timeout] ticking -> 7231.6763 -> 6731.6763
+[2025-11-23T17:10:58.7385392] [AppendEntries RPC RECEIVED] from leader=9001 traceId=63589101-ec58-4a12-b638-313c923bb8cf term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:58.7385392] [AppendEntries RPC RECEIVED] from leader=9001 traceId=9b27687f-e826-4a21-89e5-a37d0f585889 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:58.7395394] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=63589101-ec58-4a12-b638-313c923bb8cf
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:58.7395394] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=9b27687f-e826-4a21-89e5-a37d0f585889
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:58.7395394] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:58.7395394] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:58.7395394] [AppendEntries RPC] SUCCESS -> Sending response (traceId=63589101-ec58-4a12-b638-313c923bb8cf)
+[2025-11-23T17:10:58.7395394] [AppendEntries RPC] SUCCESS -> Sending response (traceId=9b27687f-e826-4a21-89e5-a37d0f585889)
+[2025-11-23T17:10:58.8931224] [Timeout] ticking -> 4968.313 -> 4468.313
+[2025-11-23T17:10:59.2533656] [AppendEntries RPC RECEIVED] from leader=9001 traceId=791a1632-9a6f-4ee4-8fb2-cd1d39350f18 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:59.2533656] [AppendEntries RPC RECEIVED] from leader=9001 traceId=7844a177-4d7d-478a-a727-2a2a4975b421 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:59.2533656] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=791a1632-9a6f-4ee4-8fb2-cd1d39350f18
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:59.2533656] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=7844a177-4d7d-478a-a727-2a2a4975b421
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:59.2533656] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:59.2533656] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:59.2533656] [AppendEntries RPC] SUCCESS -> Sending response (traceId=791a1632-9a6f-4ee4-8fb2-cd1d39350f18)
+[2025-11-23T17:10:59.2533656] [AppendEntries RPC] SUCCESS -> Sending response (traceId=7844a177-4d7d-478a-a727-2a2a4975b421)
+[2025-11-23T17:10:59.4071744] [Timeout] ticking -> 4303.335 -> 3803.335
+[2025-11-23T17:10:59.7677194] [AppendEntries RPC RECEIVED] from leader=9001 traceId=05d958a0-154c-490b-868b-6b21c7e16fa8 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:59.7692373] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=05d958a0-154c-490b-868b-6b21c7e16fa8
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:59.7692373] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:59.7692373] [AppendEntries RPC RECEIVED] from leader=9001 traceId=912ed0fa-480b-426f-ad17-78ee80af8b16 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:10:59.7692373] [AppendEntries RPC] SUCCESS -> Sending response (traceId=05d958a0-154c-490b-868b-6b21c7e16fa8)
+[2025-11-23T17:10:59.7692373] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=912ed0fa-480b-426f-ad17-78ee80af8b16
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:10:59.7692373] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:10:59.7692373] [AppendEntries RPC] SUCCESS -> Sending response (traceId=912ed0fa-480b-426f-ad17-78ee80af8b16)
+[2025-11-23T17:10:59.9226016] [Timeout] ticking -> 2154.1067 -> 1654.1067
+[2025-11-23T17:11:00.2734445] [AppendEntries RPC RECEIVED] from leader=9001 traceId=976b167e-cc5e-417e-b1de-b85d64cfdccc term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:00.2734445] [AppendEntries RPC RECEIVED] from leader=9001 traceId=0e1e873b-3343-469b-81e5-b2577b203604 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:00.2734445] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=976b167e-cc5e-417e-b1de-b85d64cfdccc
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:00.2734445] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:00.2734445] [AppendEntries RPC] SUCCESS -> Sending response (traceId=976b167e-cc5e-417e-b1de-b85d64cfdccc)
+[2025-11-23T17:11:00.2734445] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=0e1e873b-3343-469b-81e5-b2577b203604
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:00.2734445] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:00.2734445] [AppendEntries RPC] SUCCESS -> Sending response (traceId=0e1e873b-3343-469b-81e5-b2577b203604)
+[2025-11-23T17:11:00.4282463] [Timeout] ticking -> 6704.544 -> 6204.544
+[2025-11-23T17:11:00.7753402] [AppendEntries RPC RECEIVED] from leader=9001 traceId=bde325c1-fbbc-4049-a3e2-6b3a7ab816f7 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:00.7753402] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=bde325c1-fbbc-4049-a3e2-6b3a7ab816f7
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:00.7753402] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:00.7753402] [AppendEntries RPC] SUCCESS -> Sending response (traceId=bde325c1-fbbc-4049-a3e2-6b3a7ab816f7)
+[2025-11-23T17:11:00.790566] [AppendEntries RPC RECEIVED] from leader=9001 traceId=56466ef8-f008-4381-883a-0bf1ab69af89 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:00.790566] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=56466ef8-f008-4381-883a-0bf1ab69af89
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:00.790566] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:00.790566] [AppendEntries RPC] SUCCESS -> Sending response (traceId=56466ef8-f008-4381-883a-0bf1ab69af89)
+[2025-11-23T17:11:00.929173] [Timeout] ticking -> 2207.5703 -> 1707.5703
+[2025-11-23T17:11:01.2911693] [AppendEntries RPC RECEIVED] from leader=9001 traceId=ad4337a9-94d0-4995-8e92-3387cdb213ef term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:01.2911693] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=ad4337a9-94d0-4995-8e92-3387cdb213ef
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:01.2911693] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:01.2911693] [AppendEntries RPC] SUCCESS -> Sending response (traceId=ad4337a9-94d0-4995-8e92-3387cdb213ef)
+[2025-11-23T17:11:01.3060573] [AppendEntries RPC RECEIVED] from leader=9001 traceId=9bad3594-8cbf-45dc-af3b-4eb10f9056e0 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:01.3060573] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=9bad3594-8cbf-45dc-af3b-4eb10f9056e0
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:01.3060573] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:01.3070714] [AppendEntries RPC] SUCCESS -> Sending response (traceId=9bad3594-8cbf-45dc-af3b-4eb10f9056e0)
+[2025-11-23T17:11:01.4302367] [Timeout] ticking -> 5480.341 -> 4980.341
+[2025-11-23T17:11:01.8063903] [AppendEntries RPC RECEIVED] from leader=9001 traceId=9c2d0151-3e12-4628-96ba-19c9853180d3 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:01.8063903] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=9c2d0151-3e12-4628-96ba-19c9853180d3
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:01.8063903] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:01.8063903] [AppendEntries RPC] SUCCESS -> Sending response (traceId=9c2d0151-3e12-4628-96ba-19c9853180d3)
+[2025-11-23T17:11:01.8224993] [AppendEntries RPC RECEIVED] from leader=9001 traceId=f570828c-a295-4930-b10b-6e9acc3b42a9 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:01.8224993] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=f570828c-a295-4930-b10b-6e9acc3b42a9
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:01.8224993] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:01.8224993] [AppendEntries RPC] SUCCESS -> Sending response (traceId=f570828c-a295-4930-b10b-6e9acc3b42a9)
+[2025-11-23T17:11:01.9311171] [Timeout] ticking -> 4523.142 -> 4023.142
+[2025-11-23T17:11:02.311345] [AppendEntries RPC RECEIVED] from leader=9001 traceId=d10b3f08-8ab4-4e1e-83f5-02a71f90fb71 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:02.311345] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=d10b3f08-8ab4-4e1e-83f5-02a71f90fb71
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:02.311345] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:02.311345] [AppendEntries RPC] SUCCESS -> Sending response (traceId=d10b3f08-8ab4-4e1e-83f5-02a71f90fb71)
+[2025-11-23T17:11:02.3264504] [AppendEntries RPC RECEIVED] from leader=9001 traceId=bf08e51e-34ee-481c-97a9-20c346dba0ef term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:02.3264504] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=bf08e51e-34ee-481c-97a9-20c346dba0ef
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:02.3264504] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:02.3264504] [AppendEntries RPC] SUCCESS -> Sending response (traceId=bf08e51e-34ee-481c-97a9-20c346dba0ef)
+[2025-11-23T17:11:02.4327934] [Timeout] ticking -> 7341.8823 -> 6841.8823
+[2025-11-23T17:11:02.824947] [AppendEntries RPC RECEIVED] from leader=9001 traceId=297d4b28-794e-4614-ae2d-02bbcbaa1302 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:02.8259538] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=297d4b28-794e-4614-ae2d-02bbcbaa1302
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:02.8259538] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:02.8259538] [AppendEntries RPC] SUCCESS -> Sending response (traceId=297d4b28-794e-4614-ae2d-02bbcbaa1302)
+[2025-11-23T17:11:02.8411775] [AppendEntries RPC RECEIVED] from leader=9001 traceId=3c85e84d-a2e6-4fd3-91c2-6b62f306dc8e term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:02.8421787] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=3c85e84d-a2e6-4fd3-91c2-6b62f306dc8e
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:02.8421787] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:02.8421787] [AppendEntries RPC] SUCCESS -> Sending response (traceId=3c85e84d-a2e6-4fd3-91c2-6b62f306dc8e)
+[2025-11-23T17:11:02.9344116] [Timeout] ticking -> 5003.2695 -> 4503.2695
+[2025-11-23T17:11:03.3375182] [AppendEntries RPC RECEIVED] from leader=9001 traceId=f73f093a-539f-4960-88d3-42b54f494cdb term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:03.3385149] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=f73f093a-539f-4960-88d3-42b54f494cdb
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:03.3385149] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:03.3385149] [AppendEntries RPC] SUCCESS -> Sending response (traceId=f73f093a-539f-4960-88d3-42b54f494cdb)
+[2025-11-23T17:11:03.3534124] [AppendEntries RPC RECEIVED] from leader=9001 traceId=83fef1ff-ba73-4c83-aaab-22ed7a88870e term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:03.3534124] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=83fef1ff-ba73-4c83-aaab-22ed7a88870e
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:03.3534124] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:03.3534124] [AppendEntries RPC] SUCCESS -> Sending response (traceId=83fef1ff-ba73-4c83-aaab-22ed7a88870e)
+[2025-11-23T17:11:03.4445427] [Timeout] ticking -> 2160.106 -> 1660.106
+[2025-11-23T17:11:03.8515076] [AppendEntries RPC RECEIVED] from leader=9001 traceId=d59b48d6-ea0b-42cd-9fcf-ed4ecdb99187 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:03.8515076] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=d59b48d6-ea0b-42cd-9fcf-ed4ecdb99187
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:03.8515076] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:03.8515076] [AppendEntries RPC] SUCCESS -> Sending response (traceId=d59b48d6-ea0b-42cd-9fcf-ed4ecdb99187)
+[2025-11-23T17:11:03.8675671] [AppendEntries RPC RECEIVED] from leader=9001 traceId=958c5481-176e-4e44-a781-999fc2731745 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:03.8675671] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=958c5481-176e-4e44-a781-999fc2731745
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:03.8675671] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:03.8675671] [AppendEntries RPC] SUCCESS -> Sending response (traceId=958c5481-176e-4e44-a781-999fc2731745)
+[2025-11-23T17:11:03.9568751] [Timeout] ticking -> 5554.3623 -> 5054.3623
+[2025-11-23T17:11:04.3608169] [AppendEntries RPC RECEIVED] from leader=9001 traceId=b551132a-a961-41f1-90ad-d830fd2fc825 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:04.3618239] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=b551132a-a961-41f1-90ad-d830fd2fc825
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:04.3618239] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:04.3618239] [AppendEntries RPC] SUCCESS -> Sending response (traceId=b551132a-a961-41f1-90ad-d830fd2fc825)
+[2025-11-23T17:11:04.3759647] [AppendEntries RPC RECEIVED] from leader=9001 traceId=dd71b765-93d8-485d-8843-f74db6ab64b0 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:04.3759647] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=dd71b765-93d8-485d-8843-f74db6ab64b0
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:04.3759647] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:04.3759647] [AppendEntries RPC] SUCCESS -> Sending response (traceId=dd71b765-93d8-485d-8843-f74db6ab64b0)
+[2025-11-23T17:11:04.4672591] [Timeout] ticking -> 6484.282 -> 5984.282
+[2025-11-23T17:11:04.8763824] [AppendEntries RPC RECEIVED] from leader=9001 traceId=c1ca7f3d-9953-4524-b73e-5376719038ec term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:04.8763824] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=c1ca7f3d-9953-4524-b73e-5376719038ec
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:04.8763824] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:04.8763824] [AppendEntries RPC] SUCCESS -> Sending response (traceId=c1ca7f3d-9953-4524-b73e-5376719038ec)
+[2025-11-23T17:11:04.8915128] [AppendEntries RPC RECEIVED] from leader=9001 traceId=e42e0004-6cb5-4cb0-b84f-9a0ae2f3b6cd term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:04.8915128] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=e42e0004-6cb5-4cb0-b84f-9a0ae2f3b6cd
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:04.8915128] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:04.8915128] [AppendEntries RPC] SUCCESS -> Sending response (traceId=e42e0004-6cb5-4cb0-b84f-9a0ae2f3b6cd)
+[2025-11-23T17:11:04.9679996] [Timeout] ticking -> 7898.9883 -> 7398.9883
+[2025-11-23T17:11:05.3911276] [AppendEntries RPC RECEIVED] from leader=9001 traceId=1c68a5d7-cc06-43b2-bba5-f19d71df1c5e term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:05.3911276] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=1c68a5d7-cc06-43b2-bba5-f19d71df1c5e
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:05.3921412] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:05.3921412] [AppendEntries RPC] SUCCESS -> Sending response (traceId=1c68a5d7-cc06-43b2-bba5-f19d71df1c5e)
+[2025-11-23T17:11:05.4075405] [AppendEntries RPC RECEIVED] from leader=9001 traceId=2b2cf3e0-eb52-45fa-81fb-300f69a5c1ff term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:05.4075405] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=2b2cf3e0-eb52-45fa-81fb-300f69a5c1ff
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:05.4075405] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:05.4075405] [AppendEntries RPC] SUCCESS -> Sending response (traceId=2b2cf3e0-eb52-45fa-81fb-300f69a5c1ff)
+[2025-11-23T17:11:05.4825136] [Timeout] ticking -> 3993.8496 -> 3493.8496
+[2025-11-23T17:11:05.9045455] [AppendEntries RPC RECEIVED] from leader=9001 traceId=3dd413e6-24eb-4cc1-bb84-fcc1eb75a1cb term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:05.9045455] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=3dd413e6-24eb-4cc1-bb84-fcc1eb75a1cb
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:05.9045455] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:05.9045455] [AppendEntries RPC] SUCCESS -> Sending response (traceId=3dd413e6-24eb-4cc1-bb84-fcc1eb75a1cb)
+[2025-11-23T17:11:05.9204875] [AppendEntries RPC RECEIVED] from leader=9001 traceId=8b5ae299-e7be-41b9-b7b3-3a285c6625f3 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:05.9204875] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=8b5ae299-e7be-41b9-b7b3-3a285c6625f3
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:05.9204875] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:05.9204875] [AppendEntries RPC] SUCCESS -> Sending response (traceId=8b5ae299-e7be-41b9-b7b3-3a285c6625f3)
+[2025-11-23T17:11:05.9958815] [Timeout] ticking -> 7100.008 -> 6600.008
+[2025-11-23T17:11:06.4182381] [AppendEntries RPC RECEIVED] from leader=9001 traceId=2b6961fd-9f27-42e7-a16a-246ef7e59082 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:06.4182381] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=2b6961fd-9f27-42e7-a16a-246ef7e59082
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:06.4182381] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:06.4182381] [AppendEntries RPC] SUCCESS -> Sending response (traceId=2b6961fd-9f27-42e7-a16a-246ef7e59082)
+[2025-11-23T17:11:06.4325118] [AppendEntries RPC RECEIVED] from leader=9001 traceId=8d860d6c-b26f-4eaa-9a5e-ebc913a2c49a term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:06.4325118] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=8d860d6c-b26f-4eaa-9a5e-ebc913a2c49a
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:06.4325118] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:06.4325118] [AppendEntries RPC] SUCCESS -> Sending response (traceId=8d860d6c-b26f-4eaa-9a5e-ebc913a2c49a)
+[2025-11-23T17:11:06.5088334] [Timeout] ticking -> 7813.3955 -> 7313.3955
+[2025-11-23T17:11:06.9316555] [AppendEntries RPC RECEIVED] from leader=9001 traceId=aeff0166-46fc-40c5-81bb-fbfc805b6671 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:06.9316555] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=aeff0166-46fc-40c5-81bb-fbfc805b6671
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:06.9316555] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:06.9316555] [AppendEntries RPC] SUCCESS -> Sending response (traceId=aeff0166-46fc-40c5-81bb-fbfc805b6671)
+[2025-11-23T17:11:06.9463882] [AppendEntries RPC RECEIVED] from leader=9001 traceId=5970f850-cbb0-4969-a443-1bd8e8c56f6b term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:06.9463882] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=5970f850-cbb0-4969-a443-1bd8e8c56f6b
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:06.9463882] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:06.9463882] [AppendEntries RPC] SUCCESS -> Sending response (traceId=5970f850-cbb0-4969-a443-1bd8e8c56f6b)
+[2025-11-23T17:11:07.0241897] [Timeout] ticking -> 3057.5627 -> 2557.5627
+[2025-11-23T17:11:07.4449914] [AppendEntries RPC RECEIVED] from leader=9001 traceId=eb2da83f-4e4b-4247-90dc-85716ed93ecc term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:07.4449914] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=eb2da83f-4e4b-4247-90dc-85716ed93ecc
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:07.4449914] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:07.4449914] [AppendEntries RPC] SUCCESS -> Sending response (traceId=eb2da83f-4e4b-4247-90dc-85716ed93ecc)
+[2025-11-23T17:11:07.4605841] [AppendEntries RPC RECEIVED] from leader=9001 traceId=615c36b9-b81b-4c52-ac9d-2d0176783cb1 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:07.4605841] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=615c36b9-b81b-4c52-ac9d-2d0176783cb1
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:07.4605841] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:07.4605841] [AppendEntries RPC] SUCCESS -> Sending response (traceId=615c36b9-b81b-4c52-ac9d-2d0176783cb1)
+[2025-11-23T17:11:07.5366689] [Timeout] ticking -> 6829.645 -> 6329.645
+[2025-11-23T17:11:07.9594859] [AppendEntries RPC RECEIVED] from leader=9001 traceId=b1ab89a7-f4ef-4b2a-9f5c-a6650f2dc7a8 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:07.9594859] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=b1ab89a7-f4ef-4b2a-9f5c-a6650f2dc7a8
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:07.9594859] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:07.9594859] [AppendEntries RPC] SUCCESS -> Sending response (traceId=b1ab89a7-f4ef-4b2a-9f5c-a6650f2dc7a8)
+[2025-11-23T17:11:07.9743442] [AppendEntries RPC RECEIVED] from leader=9001 traceId=abcb4420-61af-4ca1-b71b-a669d69b7fd7 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:07.9743442] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=abcb4420-61af-4ca1-b71b-a669d69b7fd7
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:07.9743442] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:07.9743442] [AppendEntries RPC] SUCCESS -> Sending response (traceId=abcb4420-61af-4ca1-b71b-a669d69b7fd7)
+[2025-11-23T17:11:08.0508481] [Timeout] ticking -> 3292.5913 -> 2792.5913
+[2025-11-23T17:11:08.4716493] [AppendEntries RPC RECEIVED] from leader=9001 traceId=11f36ba6-8726-4948-a1c3-bf40c91c4e85 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:08.4716493] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=11f36ba6-8726-4948-a1c3-bf40c91c4e85
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:08.4716493] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:08.4716493] [AppendEntries RPC] SUCCESS -> Sending response (traceId=11f36ba6-8726-4948-a1c3-bf40c91c4e85)
+[2025-11-23T17:11:08.4872267] [AppendEntries RPC RECEIVED] from leader=9001 traceId=69646a34-eaad-4589-96be-3ae2de71b045 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:08.4872267] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=69646a34-eaad-4589-96be-3ae2de71b045
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:08.4872267] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:08.4872267] [AppendEntries RPC] SUCCESS -> Sending response (traceId=69646a34-eaad-4589-96be-3ae2de71b045)
+[2025-11-23T17:11:08.5633573] [Timeout] ticking -> 4545.79 -> 4045.79
+[2025-11-23T17:11:08.9739193] [AppendEntries RPC RECEIVED] from leader=9001 traceId=44f4973b-4cb3-4965-b9d3-81bf93e341cf term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:08.9739193] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=44f4973b-4cb3-4965-b9d3-81bf93e341cf
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:08.9739193] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:08.9739193] [AppendEntries RPC] SUCCESS -> Sending response (traceId=44f4973b-4cb3-4965-b9d3-81bf93e341cf)
+[2025-11-23T17:11:08.9874645] [AppendEntries RPC RECEIVED] from leader=9001 traceId=1932e70c-a34b-4457-ad79-c080ed86bad8 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:08.9874645] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=1932e70c-a34b-4457-ad79-c080ed86bad8
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:08.9874645] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:08.9874645] [AppendEntries RPC] SUCCESS -> Sending response (traceId=1932e70c-a34b-4457-ad79-c080ed86bad8)
+[2025-11-23T17:11:09.0649083] [Timeout] ticking -> 5570.7534 -> 5070.7534
+[2025-11-23T17:11:09.4873893] [AppendEntries RPC RECEIVED] from leader=9001 traceId=56ad8f71-2d78-4814-8acc-2b1c6723383b term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:09.4884043] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=56ad8f71-2d78-4814-8acc-2b1c6723383b
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:09.4884043] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:09.4884043] [AppendEntries RPC] SUCCESS -> Sending response (traceId=56ad8f71-2d78-4814-8acc-2b1c6723383b)
+[2025-11-23T17:11:09.5034506] [AppendEntries RPC RECEIVED] from leader=9001 traceId=a379adc7-ad73-4ae9-9a17-5524051cf3bc term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:09.5034506] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=a379adc7-ad73-4ae9-9a17-5524051cf3bc
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:09.5034506] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:09.5034506] [AppendEntries RPC] SUCCESS -> Sending response (traceId=a379adc7-ad73-4ae9-9a17-5524051cf3bc)
+[2025-11-23T17:11:09.5668288] [Timeout] ticking -> 4592.491 -> 4092.4912
+[2025-11-23T17:11:09.9925367] [AppendEntries RPC RECEIVED] from leader=9001 traceId=7eb5bf95-5bed-4216-9b1d-c0333cfb53f5 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:09.9925367] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=7eb5bf95-5bed-4216-9b1d-c0333cfb53f5
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:09.9925367] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:09.9925367] [AppendEntries RPC] SUCCESS -> Sending response (traceId=7eb5bf95-5bed-4216-9b1d-c0333cfb53f5)
+[2025-11-23T17:11:10.0069342] [AppendEntries RPC RECEIVED] from leader=9001 traceId=5553564d-5530-4569-89bd-10053db548f1 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:10.0069342] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=5553564d-5530-4569-89bd-10053db548f1
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:10.0069342] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:10.0069342] [AppendEntries RPC] SUCCESS -> Sending response (traceId=5553564d-5530-4569-89bd-10053db548f1)
+[2025-11-23T17:11:10.0693619] [Timeout] ticking -> 6348.3994 -> 5848.3994
+[2025-11-23T17:11:10.5074309] [AppendEntries RPC RECEIVED] from leader=9001 traceId=d3249cd9-127b-403f-b71e-6affee28a348 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:10.5074309] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=d3249cd9-127b-403f-b71e-6affee28a348
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:10.5074309] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:10.5074309] [AppendEntries RPC] SUCCESS -> Sending response (traceId=d3249cd9-127b-403f-b71e-6affee28a348)
+[2025-11-23T17:11:10.5216063] [AppendEntries RPC RECEIVED] from leader=9001 traceId=509a5747-59a1-4fe0-a283-fc91fdd53803 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:10.5216063] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=509a5747-59a1-4fe0-a283-fc91fdd53803
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:10.5216063] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:10.5226064] [AppendEntries RPC] SUCCESS -> Sending response (traceId=509a5747-59a1-4fe0-a283-fc91fdd53803)
+[2025-11-23T17:11:10.5833708] [Timeout] ticking -> 3786.3481 -> 3286.3481
+[2025-11-23T17:11:11.022208] [AppendEntries RPC RECEIVED] from leader=9001 traceId=3ce10e80-4762-4c32-ba4c-d877b5a8d717 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:11.022208] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=3ce10e80-4762-4c32-ba4c-d877b5a8d717
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:11.022208] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:11.022208] [AppendEntries RPC] SUCCESS -> Sending response (traceId=3ce10e80-4762-4c32-ba4c-d877b5a8d717)
+[2025-11-23T17:11:11.0357379] [AppendEntries RPC RECEIVED] from leader=9001 traceId=7870263e-cc5a-4ab2-b193-a03eea9ed5c7 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:11.0367449] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=7870263e-cc5a-4ab2-b193-a03eea9ed5c7
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:11.0367449] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:11.0367449] [AppendEntries RPC] SUCCESS -> Sending response (traceId=7870263e-cc5a-4ab2-b193-a03eea9ed5c7)
+[2025-11-23T17:11:11.0974909] [Timeout] ticking -> 6637.4443 -> 6137.4443
+[2025-11-23T17:11:11.5365367] [AppendEntries RPC RECEIVED] from leader=9001 traceId=bceeba8c-58c4-4fb2-b330-2a8638be87ce term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:11.5365367] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=bceeba8c-58c4-4fb2-b330-2a8638be87ce
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:11.5365367] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:11.5365367] [AppendEntries RPC] SUCCESS -> Sending response (traceId=bceeba8c-58c4-4fb2-b330-2a8638be87ce)
+[2025-11-23T17:11:11.551452] [AppendEntries RPC RECEIVED] from leader=9001 traceId=343d36e1-32f9-4f38-9989-c615359abf81 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:11.551452] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=343d36e1-32f9-4f38-9989-c615359abf81
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:11.551452] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:11.551452] [AppendEntries RPC] SUCCESS -> Sending response (traceId=343d36e1-32f9-4f38-9989-c615359abf81)
+[2025-11-23T17:11:11.6124366] [Timeout] ticking -> 5585.6484 -> 5085.6484
+[2025-11-23T17:11:12.0486945] [AppendEntries RPC RECEIVED] from leader=9001 traceId=db2bd2f8-6e8c-4228-894c-b79adfd1b8db term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:12.0486945] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=db2bd2f8-6e8c-4228-894c-b79adfd1b8db
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:12.0486945] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:12.0486945] [AppendEntries RPC] SUCCESS -> Sending response (traceId=db2bd2f8-6e8c-4228-894c-b79adfd1b8db)
+[2025-11-23T17:11:12.0632117] [AppendEntries RPC RECEIVED] from leader=9001 traceId=d9b107d8-0b42-4d9f-ad1a-fb665fef6484 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:12.0632117] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=d9b107d8-0b42-4d9f-ad1a-fb665fef6484
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:12.0632117] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:12.0632117] [AppendEntries RPC] SUCCESS -> Sending response (traceId=d9b107d8-0b42-4d9f-ad1a-fb665fef6484)
+[2025-11-23T17:11:12.1246932] [Timeout] ticking -> 2688.745 -> 2188.745
+[2025-11-23T17:11:12.5616621] [AppendEntries RPC RECEIVED] from leader=9001 traceId=8206c778-e09a-41ea-a86b-78229b5420b1 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:12.562668] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=8206c778-e09a-41ea-a86b-78229b5420b1
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:12.562668] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:12.562668] [AppendEntries RPC] SUCCESS -> Sending response (traceId=8206c778-e09a-41ea-a86b-78229b5420b1)
+[2025-11-23T17:11:12.5771915] [AppendEntries RPC RECEIVED] from leader=9001 traceId=d6544a95-ec5d-4132-a778-0ea874dd3eb1 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:12.5771915] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=d6544a95-ec5d-4132-a778-0ea874dd3eb1
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:12.5771915] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:12.5771915] [AppendEntries RPC] SUCCESS -> Sending response (traceId=d6544a95-ec5d-4132-a778-0ea874dd3eb1)
+[2025-11-23T17:11:12.6375284] [Timeout] ticking -> 3939.649 -> 3439.649
+[2025-11-23T17:11:13.0763037] [AppendEntries RPC RECEIVED] from leader=9001 traceId=aa174d32-aedf-444f-8f17-767d48e56ac3 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:13.0763037] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=aa174d32-aedf-444f-8f17-767d48e56ac3
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:13.0763037] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:13.0763037] [AppendEntries RPC] SUCCESS -> Sending response (traceId=aa174d32-aedf-444f-8f17-767d48e56ac3)
+[2025-11-23T17:11:13.09134] [AppendEntries RPC RECEIVED] from leader=9001 traceId=cfe810e7-4e74-471e-95d7-2c0e3c214acd term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:13.09134] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=cfe810e7-4e74-471e-95d7-2c0e3c214acd
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:13.09134] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:13.09134] [AppendEntries RPC] SUCCESS -> Sending response (traceId=cfe810e7-4e74-471e-95d7-2c0e3c214acd)
+[2025-11-23T17:11:13.1524045] [Timeout] ticking -> 6883.8096 -> 6383.8096
+[2025-11-23T17:11:13.5878343] [AppendEntries RPC RECEIVED] from leader=9001 traceId=fba8afd7-2bd9-48cf-98e3-bf7cec3152c0 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:13.5878343] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=fba8afd7-2bd9-48cf-98e3-bf7cec3152c0
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:13.5878343] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:13.5878343] [AppendEntries RPC] SUCCESS -> Sending response (traceId=fba8afd7-2bd9-48cf-98e3-bf7cec3152c0)
+[2025-11-23T17:11:13.6032145] [AppendEntries RPC RECEIVED] from leader=9001 traceId=35f79aa6-9475-45b2-a0ed-cf62a4d80705 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:13.6032145] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=35f79aa6-9475-45b2-a0ed-cf62a4d80705
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:13.6032145] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:13.6032145] [AppendEntries RPC] SUCCESS -> Sending response (traceId=35f79aa6-9475-45b2-a0ed-cf62a4d80705)
+[2025-11-23T17:11:13.6632564] [Timeout] ticking -> 7861.6772 -> 7361.6772
+[2025-11-23T17:11:14.102444] [AppendEntries RPC RECEIVED] from leader=9001 traceId=63fafc5f-903a-4e51-a3c9-01d96efeb670 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:14.1035337] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=63fafc5f-903a-4e51-a3c9-01d96efeb670
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:14.1035337] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:14.1035337] [AppendEntries RPC] SUCCESS -> Sending response (traceId=63fafc5f-903a-4e51-a3c9-01d96efeb670)
+[2025-11-23T17:11:14.1176304] [AppendEntries RPC RECEIVED] from leader=9001 traceId=8fda8c6a-6f2e-495a-8247-f9290d604f7a term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:14.1176304] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=8fda8c6a-6f2e-495a-8247-f9290d604f7a
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:14.1176304] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:14.1176304] [AppendEntries RPC] SUCCESS -> Sending response (traceId=8fda8c6a-6f2e-495a-8247-f9290d604f7a)
+[2025-11-23T17:11:14.1779731] [Timeout] ticking -> 4402.407 -> 3902.4072
+[2025-11-23T17:11:14.6182843] [AppendEntries RPC RECEIVED] from leader=9001 traceId=61445626-de29-4adb-9e3e-cec74c8a5829 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:14.6193596] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=61445626-de29-4adb-9e3e-cec74c8a5829
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:14.6193596] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:14.6193596] [AppendEntries RPC] SUCCESS -> Sending response (traceId=61445626-de29-4adb-9e3e-cec74c8a5829)
+[2025-11-23T17:11:14.6334152] [AppendEntries RPC RECEIVED] from leader=9001 traceId=6d912e1d-3fdf-4bea-8719-4895987fc71d term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:14.6334152] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=6d912e1d-3fdf-4bea-8719-4895987fc71d
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:14.6343861] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:14.6343861] [AppendEntries RPC] SUCCESS -> Sending response (traceId=6d912e1d-3fdf-4bea-8719-4895987fc71d)
+[2025-11-23T17:11:14.6797138] [Timeout] ticking -> 6577.773 -> 6077.773
+[2025-11-23T17:11:15.1304598] [AppendEntries RPC RECEIVED] from leader=9001 traceId=46979c10-709c-4740-97d8-df488daf11e9 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:15.1304598] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=46979c10-709c-4740-97d8-df488daf11e9
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:15.1304598] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:15.1304598] [AppendEntries RPC] SUCCESS -> Sending response (traceId=46979c10-709c-4740-97d8-df488daf11e9)
+[2025-11-23T17:11:15.1453837] [AppendEntries RPC RECEIVED] from leader=9001 traceId=536ee26e-7e80-48c1-b41a-67d9e623425d term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:15.1453837] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=536ee26e-7e80-48c1-b41a-67d9e623425d
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:15.1453837] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:15.1453837] [AppendEntries RPC] SUCCESS -> Sending response (traceId=536ee26e-7e80-48c1-b41a-67d9e623425d)
+[2025-11-23T17:11:15.190443] [Timeout] ticking -> 7598.8804 -> 7098.8804
+[2025-11-23T17:11:15.6435395] [AppendEntries RPC RECEIVED] from leader=9001 traceId=5ed0332f-3d54-4066-bf58-a3522fe3fe46 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:15.6435395] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=5ed0332f-3d54-4066-bf58-a3522fe3fe46
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:15.6435395] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:15.6435395] [AppendEntries RPC] SUCCESS -> Sending response (traceId=5ed0332f-3d54-4066-bf58-a3522fe3fe46)
+[2025-11-23T17:11:15.6581769] [AppendEntries RPC RECEIVED] from leader=9001 traceId=f0fce2b2-4b54-4100-933a-ad5350d913c6 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:15.6581769] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=f0fce2b2-4b54-4100-933a-ad5350d913c6
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:15.6581769] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:15.6581769] [AppendEntries RPC] SUCCESS -> Sending response (traceId=f0fce2b2-4b54-4100-933a-ad5350d913c6)
+[2025-11-23T17:11:15.703708] [Timeout] ticking -> 3811.6182 -> 3311.6182
+[2025-11-23T17:11:16.1565853] [AppendEntries RPC RECEIVED] from leader=9001 traceId=18375943-335a-4ef0-980b-0709361079ca term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:16.1565853] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=18375943-335a-4ef0-980b-0709361079ca
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:16.1565853] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:16.1565853] [AppendEntries RPC] SUCCESS -> Sending response (traceId=18375943-335a-4ef0-980b-0709361079ca)
+[2025-11-23T17:11:16.1717766] [AppendEntries RPC RECEIVED] from leader=9001 traceId=eb62a131-501e-40fc-b1e1-78e9725a88cd term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:16.1717766] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=eb62a131-501e-40fc-b1e1-78e9725a88cd
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:16.1717766] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:16.1717766] [AppendEntries RPC] SUCCESS -> Sending response (traceId=eb62a131-501e-40fc-b1e1-78e9725a88cd)
+[2025-11-23T17:11:16.2161366] [Timeout] ticking -> 2572.6904 -> 2072.6904
+[2025-11-23T17:11:16.667922] [AppendEntries RPC RECEIVED] from leader=9001 traceId=1b767909-d806-47b2-9960-8d6d1c3acbe4 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:16.667922] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=1b767909-d806-47b2-9960-8d6d1c3acbe4
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:16.667922] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:16.667922] [AppendEntries RPC] SUCCESS -> Sending response (traceId=1b767909-d806-47b2-9960-8d6d1c3acbe4)
+[2025-11-23T17:11:16.6834983] [AppendEntries RPC RECEIVED] from leader=9001 traceId=94860688-116d-46e2-a187-98188d1aa745 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:16.6834983] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=94860688-116d-46e2-a187-98188d1aa745
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:16.6834983] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:16.6834983] [AppendEntries RPC] SUCCESS -> Sending response (traceId=94860688-116d-46e2-a187-98188d1aa745)
+[2025-11-23T17:11:16.7276368] [Timeout] ticking -> 7662.963 -> 7162.963
+[2025-11-23T17:11:17.1795941] [AppendEntries RPC RECEIVED] from leader=9001 traceId=3c203c57-0101-4226-8093-51261c758bb4 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:17.1795941] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=3c203c57-0101-4226-8093-51261c758bb4
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:17.1795941] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:17.1795941] [AppendEntries RPC] SUCCESS -> Sending response (traceId=3c203c57-0101-4226-8093-51261c758bb4)
+[2025-11-23T17:11:17.194551] [AppendEntries RPC RECEIVED] from leader=9001 traceId=de137101-731f-4787-a6eb-541f8ceacd9a term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:17.194551] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=de137101-731f-4787-a6eb-541f8ceacd9a
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:17.194551] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:17.194551] [AppendEntries RPC] SUCCESS -> Sending response (traceId=de137101-731f-4787-a6eb-541f8ceacd9a)
+[2025-11-23T17:11:17.2393657] [Timeout] ticking -> 7158.9644 -> 6658.9644
+[2025-11-23T17:11:17.6944309] [AppendEntries RPC RECEIVED] from leader=9001 traceId=96a6809a-9204-4c18-a232-f4d139fdd683 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:17.6944309] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=96a6809a-9204-4c18-a232-f4d139fdd683
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:17.6944309] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:17.6944309] [AppendEntries RPC] SUCCESS -> Sending response (traceId=96a6809a-9204-4c18-a232-f4d139fdd683)
+[2025-11-23T17:11:17.7086364] [AppendEntries RPC RECEIVED] from leader=9001 traceId=ca872b87-27bf-4902-b754-709ac47c434c term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:17.7096368] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=ca872b87-27bf-4902-b754-709ac47c434c
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:17.7096368] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:17.7096368] [AppendEntries RPC] SUCCESS -> Sending response (traceId=ca872b87-27bf-4902-b754-709ac47c434c)
+[2025-11-23T17:11:17.73962] [Timeout] ticking -> 7620.7437 -> 7120.7437
+[2025-11-23T17:11:18.2084278] [AppendEntries RPC RECEIVED] from leader=9001 traceId=6902ef43-12f9-4c79-b9fb-7b517f3d77df term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:18.2084278] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=6902ef43-12f9-4c79-b9fb-7b517f3d77df
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:18.2084278] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:18.2084278] [AppendEntries RPC] SUCCESS -> Sending response (traceId=6902ef43-12f9-4c79-b9fb-7b517f3d77df)
+[2025-11-23T17:11:18.2232618] [AppendEntries RPC RECEIVED] from leader=9001 traceId=c144427f-2e0e-4980-a120-133f1bd1e0d8 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:18.2242549] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=c144427f-2e0e-4980-a120-133f1bd1e0d8
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:18.2242549] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:18.2242549] [AppendEntries RPC] SUCCESS -> Sending response (traceId=c144427f-2e0e-4980-a120-133f1bd1e0d8)
+[2025-11-23T17:11:18.2526969] [Timeout] ticking -> 2492.5535 -> 1992.5535
+[2025-11-23T17:11:18.7246625] [AppendEntries RPC RECEIVED] from leader=9001 traceId=9a9f91ad-4af6-4096-96e7-d24e64affbcc term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:18.7246625] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=9a9f91ad-4af6-4096-96e7-d24e64affbcc
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:18.7246625] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:18.7246625] [AppendEntries RPC] SUCCESS -> Sending response (traceId=9a9f91ad-4af6-4096-96e7-d24e64affbcc)
+[2025-11-23T17:11:18.7409229] [AppendEntries RPC RECEIVED] from leader=9001 traceId=34d09413-06d0-4b29-bc5c-3f70f2b3f7f9 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:18.7409229] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=34d09413-06d0-4b29-bc5c-3f70f2b3f7f9
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:18.7409229] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:18.7409229] [AppendEntries RPC] SUCCESS -> Sending response (traceId=34d09413-06d0-4b29-bc5c-3f70f2b3f7f9)
+[2025-11-23T17:11:18.7544445] [Timeout] ticking -> 4523.582 -> 4023.582
+[2025-11-23T17:11:19.2270194] [AppendEntries RPC RECEIVED] from leader=9001 traceId=8f389b11-5556-49a3-9e48-3ea303d2fed2 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:19.2270194] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=8f389b11-5556-49a3-9e48-3ea303d2fed2
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:19.2270194] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:19.2270194] [AppendEntries RPC] SUCCESS -> Sending response (traceId=8f389b11-5556-49a3-9e48-3ea303d2fed2)
+[2025-11-23T17:11:19.2414432] [AppendEntries RPC RECEIVED] from leader=9001 traceId=e807bbaf-b9bc-430f-8d69-848d136387aa term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:19.2414432] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=e807bbaf-b9bc-430f-8d69-848d136387aa
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:19.2414432] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:19.2414432] [AppendEntries RPC] SUCCESS -> Sending response (traceId=e807bbaf-b9bc-430f-8d69-848d136387aa)
+[2025-11-23T17:11:19.2549738] [Timeout] ticking -> 3414.3345 -> 2914.3345
+[2025-11-23T17:11:19.7384942] [AppendEntries RPC RECEIVED] from leader=9001 traceId=66c4264d-19ad-47f1-91f4-feafd03a8bf4 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:19.7384942] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=66c4264d-19ad-47f1-91f4-feafd03a8bf4
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:19.7384942] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:19.7384942] [AppendEntries RPC] SUCCESS -> Sending response (traceId=66c4264d-19ad-47f1-91f4-feafd03a8bf4)
+[2025-11-23T17:11:19.7544367] [AppendEntries RPC RECEIVED] from leader=9001 traceId=67795cbc-8e5b-481b-baa3-edf76b0e126d term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:19.7544367] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=67795cbc-8e5b-481b-baa3-edf76b0e126d
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:19.7544367] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:19.7544367] [AppendEntries RPC] SUCCESS -> Sending response (traceId=67795cbc-8e5b-481b-baa3-edf76b0e126d)
+[2025-11-23T17:11:19.7685643] [Timeout] ticking -> 4739.33 -> 4239.33
+[2025-11-23T17:11:20.2525628] [AppendEntries RPC RECEIVED] from leader=9001 traceId=329a9d16-b127-40da-b3d0-43e0db5a9e45 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:20.2525628] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=329a9d16-b127-40da-b3d0-43e0db5a9e45
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:20.2525628] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:20.2525628] [AppendEntries RPC] SUCCESS -> Sending response (traceId=329a9d16-b127-40da-b3d0-43e0db5a9e45)
+[2025-11-23T17:11:20.2699563] [AppendEntries RPC RECEIVED] from leader=9001 traceId=83b80219-9fbd-4358-8263-4862820c384b term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:20.2699563] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=83b80219-9fbd-4358-8263-4862820c384b
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:20.2699563] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:20.2699563] [AppendEntries RPC] SUCCESS -> Sending response (traceId=83b80219-9fbd-4358-8263-4862820c384b)
+[2025-11-23T17:11:20.2834275] [Timeout] ticking -> 4291.2285 -> 3791.2285
+[2025-11-23T17:11:20.7681762] [AppendEntries RPC RECEIVED] from leader=9001 traceId=83fbff7e-63cd-4325-8925-47478b50e21a term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:20.7681762] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=83fbff7e-63cd-4325-8925-47478b50e21a
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:20.7681762] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:20.7681762] [AppendEntries RPC] SUCCESS -> Sending response (traceId=83fbff7e-63cd-4325-8925-47478b50e21a)
+[2025-11-23T17:11:20.7846294] [AppendEntries RPC RECEIVED] from leader=9001 traceId=d01099aa-e892-4c7e-8484-193547562e2e term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:20.7856357] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=d01099aa-e892-4c7e-8484-193547562e2e
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:20.7856357] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:20.7856357] [AppendEntries RPC] SUCCESS -> Sending response (traceId=d01099aa-e892-4c7e-8484-193547562e2e)
+[2025-11-23T17:11:20.797974] [Timeout] ticking -> 2481.8071 -> 1981.8071
+[2025-11-23T17:11:21.2835878] [AppendEntries RPC RECEIVED] from leader=9001 traceId=fa7bc918-3c54-4977-bf84-086d49afccd1 term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:21.2835878] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=fa7bc918-3c54-4977-bf84-086d49afccd1
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:21.2835878] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:21.2835878] [AppendEntries RPC] SUCCESS -> Sending response (traceId=fa7bc918-3c54-4977-bf84-086d49afccd1)
+[2025-11-23T17:11:21.2994197] [AppendEntries RPC RECEIVED] from leader=9001 traceId=d825d55b-e623-473b-ad06-6b9eef5a704d term=1 prevLogIndex=4 prevLogTerm=1 entries=0 leaderCommit=4
+[2025-11-23T17:11:21.2994197] [AppendEntries RPC] RECEIVED
+  from leader=9001
+  traceId=d825d55b-e623-473b-ad06-6b9eef5a704d
+  term=1
+  prevLogIndex=4
+  prevLogTerm=1
+  entriesCount=0
+  leaderCommit=4
+  myTerm=1
+  myCommitIndex=4
+[2025-11-23T17:11:21.2994197] [AppendEntries RPC] Heartbeat received -> resetting timeout
+[2025-11-23T17:11:21.2994197] [AppendEntries RPC] SUCCESS -> Sending response (traceId=d825d55b-e623-473b-ad06-6b9eef5a704d)
+[2025-11-23T17:11:21.312521] [Timeout] ticking -> 4311.6436 -> 3811.6436
+[2025-11-23T17:11:21.8135477] [Timeout] ticking -> 3811.6436 -> 3311.6436
+[2025-11-23T17:11:22.3254369] [Timeout] ticking -> 3311.6436 -> 2811.6436
+[2025-11-23T17:11:22.8265123] [Timeout] ticking -> 2811.6436 -> 2311.6436
