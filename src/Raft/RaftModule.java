@@ -46,7 +46,9 @@ public class RaftModule {
 
     public int stateMachineLogIndex = 1;
 
-    public RaftModule(int serverPort, ArrayList<Integer> peers, boolean initAsLeader){
+    private int clientPort;
+
+    public RaftModule(int serverPort, ArrayList<Integer> peers, boolean initAsLeader, int clientPort){
         this.serverPort = serverPort;
         this.peers = peers;
         this.timeOut = this.generateRandomTime();
@@ -54,7 +56,7 @@ public class RaftModule {
         this.redirectOutput = new RedirectOutput(serverPort);
         this.initAsLeader = initAsLeader;
         this.stateMachineLogIndex = 1;
-
+        this.clientPort = clientPort;
     }
 
     public void Start(){
@@ -518,10 +520,13 @@ public class RaftModule {
                     }
                     pb.directory(new File(cwd));
 
-                    pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-                    pb.redirectError(ProcessBuilder.Redirect.INHERIT);
+                    pb.redirectOutput(ProcessBuilder.Redirect.PIPE);
+                    pb.redirectError(ProcessBuilder.Redirect.PIPE);
 
                     Process process = pb.start();
+
+                    String output = new String(process.getInputStream().readAllBytes());
+                    String error = new String(process.getErrorStream().readAllBytes());
 
                     int exitCode = process.waitFor();
                     System.out.println("Shell command exited with code: " + exitCode);
@@ -532,10 +537,15 @@ public class RaftModule {
                     if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
                         // propogate response back to client
                         ClientCommandRPCResultDTO dto = new ClientCommandRPCResultDTO();
-                        dto.setSuccess(true);
+                        dto.setSuccess(exitCode == 0);
                         dto.setCommitIndex(this.storage.getCommitIndex());
-                        dto.setMessage("shell command applied successfully");
-                        this.grpc.sendClientCommandResponseRpc(8000, dto);
+                        if(exitCode == 0){
+                            dto.setMessage("shell command applied successfully ! redirecting output : " + output);
+                        }
+                        else{
+                            dto.setMessage("shell command applied failure ! redirecting output : " + error);
+                        }
+                        this.grpc.sendClientCommandResponseRpc(this.clientPort, dto);
                     }
 
                     Thread.sleep((int)this.timeFragment * 3);
