@@ -764,6 +764,29 @@ public class RaftModule {
                             dto.entries = new ArrayList<>(
                                     this.storage.getLogs().subList(nextLogIndex -1, lastIndex)
                             );
+
+                            ArrayList<Log> normalizedLogs = new ArrayList<>();
+                            for(Log log : dto.entries){
+                                String shellCommand = log.shellCommand.trim();
+                                String normalizedShellCommand = "";
+                                for(int j = 0 ;j <shellCommand.length(); j++){
+                                    Character ch = shellCommand.charAt(j);
+                                    if(ch.equals('\"')) {
+                                        normalizedShellCommand += "\\\"";
+                                    }
+                                    else{
+                                        normalizedShellCommand += ch.toString();
+                                    }
+                                }
+                                normalizedShellCommand = normalizedShellCommand.trim();
+                                Log normalizedLog = new Log();
+                                normalizedLog.shellCommand = normalizedShellCommand;
+                                normalizedLog.term = log.term;
+                                normalizedLog.index = log.index;
+                                normalizedLogs.add(normalizedLog);
+                            }
+                            dto.entries = normalizedLogs;
+
                         } else {
                             dto.entries = new ArrayList<>();
                         }
@@ -865,6 +888,20 @@ public class RaftModule {
                         else{
                             dto.setMessage("shell command applied failure ! redirecting output : " + error);
                         }
+
+
+                        String normalizedMessage = "";
+                        for(int i = 0 ;i < dto.getMessage().length(); i++){
+                            Character ch = dto.getMessage().charAt(i);
+                            if(ch.equals('\"')) {
+                                normalizedMessage += "\\\"";
+                            }
+                            else{
+                                normalizedMessage += ch.toString();
+                            }
+                        }
+                        dto.setMessage(normalizedMessage);
+
                         this.grpc.sendClientCommandResponseRpc(this.clientPort, dto);
                     }
 

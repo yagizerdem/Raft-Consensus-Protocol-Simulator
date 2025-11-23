@@ -2,6 +2,7 @@ import Models.*;
 import Raft.RaftModule;
 import RpcModule.Grpc;
 import RpcModule.IRpcHandler;
+import com.sun.jdi.CharType;
 
 import javax.sound.midi.Soundbank;
 import java.awt.event.TextEvent;
@@ -112,12 +113,24 @@ public class ClientShell {
                 String shellCommand = defaultShellCommands.get(defaultShellCommandIdx);
                 if (waitResponse) continue;
 
-                System.out.println("Shell command to execute : " + shellCommand);
+                String normalizedShellCommand = "";
+                for(int i = 0 ;i <shellCommand.length(); i++){
+                    Character ch = shellCommand.charAt(i);
+                    if(ch.equals('\"')) {
+                        normalizedShellCommand += "\\\"";
+                    }
+                    else{
+                        normalizedShellCommand += ch.toString();
+                    }
+                }
+                normalizedShellCommand = normalizedShellCommand.trim();
+
+                System.out.println("Shell command to execute : " + normalizedShellCommand);
                 waitResponse = true;
 
                 for (Integer peer : peers) {
                     ClientCommandRPCDTO commandDto = new ClientCommandRPCDTO();
-                    commandDto.shellCommand = shellCommand.trim();
+                    commandDto.shellCommand = normalizedShellCommand;
                     commandDto.clientPort = port;
                     grpc.sendClientCommandRcp(peer, commandDto);
                 }
@@ -140,13 +153,27 @@ public class ClientShell {
                     if(waitResponse) continue;
 
                     String shellCommand = line.trim();
+                    String normalizedShellCommand = "";
+                    for(int i = 0 ;i <shellCommand.length(); i++){
+                        Character ch = shellCommand.charAt(i);
+                        if(ch.equals('\"')) {
+                            normalizedShellCommand += "\\\"";
+                        }
+                        else{
+                            normalizedShellCommand += ch.toString();
+                        }
+                    }
+                    normalizedShellCommand = normalizedShellCommand.trim();
+                    //normalizedShellCommand = "type  nul > \\\"test test.txt\\\"";
+
+                    System.out.println("Shell command to execute : " + normalizedShellCommand);
 
                     waitResponse = true;
 
                     // send grpc to leader server
                     for(Integer peer : peers){
                         ClientCommandRPCDTO commandDto = new ClientCommandRPCDTO();
-                        commandDto.shellCommand = shellCommand;
+                        commandDto.shellCommand = normalizedShellCommand;
                         commandDto.clientPort = port;
                         grpc.sendClientCommandRcp(peer, commandDto);
                     }

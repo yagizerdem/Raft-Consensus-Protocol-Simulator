@@ -1,0 +1,129 @@
+@echo off
+setlocal EnableDelayedExpansion
+
+echo Creating QuickSortDetailed.java...
+type nul > QuickSortDetailed.java
+
+echo public class QuickSortDetailed { >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo     private static int stepCount = 0; >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo     public static void main(String[] args) { >> QuickSortDetailed.java
+echo         int[] array = {64, 34, 25, 12, 22, 11, 90, 88, 45, 50}; >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo         System.out.println("=========================================================="); >> QuickSortDetailed.java
+echo         System.out.println("          QUICKSORT ALGORITHM - DETAILED STEPS            "); >> QuickSortDetailed.java
+echo         System.out.println("==========================================================\n"); >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo         System.out.println("Initial Array:"); >> QuickSortDetailed.java
+echo         printArray(array); >> QuickSortDetailed.java
+echo         System.out.println("\n" + "=".repeat(60) + "\n"); >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo         quickSort(array, 0, array.length - 1, 0); >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo         System.out.println("\n" + "=".repeat(60)); >> QuickSortDetailed.java
+echo         System.out.println("SORTED ARRAY:"); >> QuickSortDetailed.java
+echo         printArray(array); >> QuickSortDetailed.java
+echo         System.out.println("\nTotal Steps: " + stepCount); >> QuickSortDetailed.java
+echo     } >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo     public static void quickSort(int[] array, int low, int high, int level) { >> QuickSortDetailed.java
+echo         if (low ^< high) { >> QuickSortDetailed.java
+echo             stepCount++; >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo             String indent = "  ".repeat(level); >> QuickSortDetailed.java
+echo             System.out.println(indent + "--- Step " + stepCount + " ---"); >> QuickSortDetailed.java
+echo             System.out.println(indent + "Range: [" + low + " - " + high + "]"); >> QuickSortDetailed.java
+echo             System.out.print(indent + "Sub-array: "); >> QuickSortDetailed.java
+echo             printSubArray(array, low, high); >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo             int pivotIndex = partition(array, low, high, indent); >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo             System.out.println(indent + ""); >> QuickSortDetailed.java
+echo             System.out.println(indent + "Pivot placed: " + array[pivotIndex] + " (index: " + pivotIndex + ")"); >> QuickSortDetailed.java
+echo             System.out.print(indent + "Current state: "); >> QuickSortDetailed.java
+echo             printSubArray(array, low, high); >> QuickSortDetailed.java
+echo             System.out.println(indent + "---------------------------------"); >> QuickSortDetailed.java
+echo             System.out.println(); >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo             if (pivotIndex - 1 ^> low) { >> QuickSortDetailed.java
+echo                 System.out.println(indent + "LEFT BRANCH:"); >> QuickSortDetailed.java
+echo                 quickSort(array, low, pivotIndex - 1, level + 1); >> QuickSortDetailed.java
+echo             } >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo             if (pivotIndex + 1 ^< high) { >> QuickSortDetailed.java
+echo                 System.out.println(indent + "RIGHT BRANCH:"); >> QuickSortDetailed.java
+echo                 quickSort(array, pivotIndex + 1, high, level + 1); >> QuickSortDetailed.java
+echo             } >> QuickSortDetailed.java
+echo         } >> QuickSortDetailed.java
+echo     } >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo     public static int partition(int[] array, int low, int high, String indent) { >> QuickSortDetailed.java
+echo         int pivot = array[high]; >> QuickSortDetailed.java
+echo         System.out.println(indent + "Pivot selected: " + pivot + " (index: " + high + ")"); >> QuickSortDetailed.java
+echo         System.out.println(indent + ""); >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo         int i = low - 1; >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo         for (int j = low; j ^< high; j++) { >> QuickSortDetailed.java
+echo             System.out.println(indent + "  Comparing " + array[j] + " with " + pivot + "..."); >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo             if (array[j] ^<= pivot) { >> QuickSortDetailed.java
+echo                 i++; >> QuickSortDetailed.java
+echo                 if (i != j) { >> QuickSortDetailed.java
+echo                     System.out.println(indent + "    Swap: " + array[i] + " ^<-> " + array[j]); >> QuickSortDetailed.java
+echo                     int temp = array[i]; >> QuickSortDetailed.java
+echo                     array[i] = array[j]; >> QuickSortDetailed.java
+echo                     array[j] = temp; >> QuickSortDetailed.java
+echo                     System.out.print(indent + "    State: "); >> QuickSortDetailed.java
+echo                     printSubArray(array, low, high); >> QuickSortDetailed.java
+echo                 } else { >> QuickSortDetailed.java
+echo                     System.out.println(indent + "    Already in correct position"); >> QuickSortDetailed.java
+echo                 } >> QuickSortDetailed.java
+echo             } else { >> QuickSortDetailed.java
+echo                 System.out.println(indent + "    Greater than pivot, skip"); >> QuickSortDetailed.java
+echo             } >> QuickSortDetailed.java
+echo         } >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo         i++; >> QuickSortDetailed.java
+echo         if (i != high) { >> QuickSortDetailed.java
+echo             System.out.println(indent + ""); >> QuickSortDetailed.java
+echo             System.out.println(indent + "  Moving pivot to center: " + array[i] + " ^<-> " + array[high]); >> QuickSortDetailed.java
+echo             int temp = array[i]; >> QuickSortDetailed.java
+echo             array[i] = array[high]; >> QuickSortDetailed.java
+echo             array[high] = temp; >> QuickSortDetailed.java
+echo         } >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo         return i; >> QuickSortDetailed.java
+echo     } >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo     public static void printArray(int[] array) { >> QuickSortDetailed.java
+echo         System.out.print("["); >> QuickSortDetailed.java
+echo         for (int i = 0; i ^< array.length; i++) { >> QuickSortDetailed.java
+echo             System.out.print(array[i]); >> QuickSortDetailed.java
+echo             if (i ^< array.length - 1) System.out.print(", "); >> QuickSortDetailed.java
+echo         } >> QuickSortDetailed.java
+echo         System.out.println("]"); >> QuickSortDetailed.java
+echo     } >> QuickSortDetailed.java
+echo. >> QuickSortDetailed.java
+echo     public static void printSubArray(int[] array, int low, int high) { >> QuickSortDetailed.java
+echo         System.out.print("["); >> QuickSortDetailed.java
+echo         for (int i = low; i ^<= high; i++) { >> QuickSortDetailed.java
+echo             System.out.print(array[i]); >> QuickSortDetailed.java
+echo             if (i ^< high) System.out.print(", "); >> QuickSortDetailed.java
+echo         } >> QuickSortDetailed.java
+echo         System.out.println("]"); >> QuickSortDetailed.java
+echo     } >> QuickSortDetailed.java
+echo } >> QuickSortDetailed.java
+
+echo Compiling...
+javac QuickSortDetailed.java
+
+if %errorlevel%==0 (
+    echo Running program...
+    start cmd /k java QuickSortDetailed
+) else (
+    echo Compile FAILED!
+)
+
+pause

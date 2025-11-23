@@ -214,6 +214,8 @@ public class JsonModule {
             COLON, // :
             COMMA, // ,
             STRING, // [a-zA-Z0-9]*
+
+            UNKNOWN,
         }
 
         public static class Token {
@@ -272,33 +274,61 @@ public class JsonModule {
                     tokenStream.add(token);
                     this.move(); // consume char
                 }
+                else{
+                    this.move();
+                }
             }
 
             return  tokenStream;
         }
 
-        private Token getStringToken() throws Exception{
-            String lookAheadChar = this.peek();
-            if(!lookAheadChar.equals("\"")) throw new Exception("String must start with \" ");
-            this.move(); // consume "
-            String  lexeme = "";
-            lookAheadChar = this.peek();
-            while (!lookAheadChar.equals("\"")) {
-                lexeme += this.peek();
-                this.move(); // consume char
-                lookAheadChar = this.peek();
+        private Token getStringToken() throws Exception {
+            if (!"\"".equals(peek())) {
+                throw new Exception("String must start with \"");
             }
-            lookAheadChar = this.peek();
-            if(!lookAheadChar.equals("\"")) throw new Exception("String must end with \" ");
-            this.move(); // consume "
 
-            Token token = new Token();
-            token.lexeme =lexeme;
-            token.type= TokenType.STRING;
+            move(); // consume opening "
 
-            return  token;
+            StringBuilder lexeme = new StringBuilder();
+            boolean escaped = false;
+
+            while (true) {
+                String ch = peek();
+                if (ch == null) {
+                    throw new Exception("Unexpected end of input inside string");
+                }
+
+                move(); // consume char
+
+                if (escaped) {
+                    // handle escaped characters
+                    switch (ch) {
+                        case "\"": lexeme.append("\""); break;
+                        case "\\": lexeme.append("\\"); break;
+                        case "n": lexeme.append("\n"); break;
+                        case "t": lexeme.append("\t"); break;
+                        case "r": lexeme.append("\r"); break;
+                        default: lexeme.append(ch); break; // unknown escape → keep literal
+                    }
+                    escaped = false;
+                }
+                else {
+                    if (ch.equals("\\")) {
+                        escaped = true; // next char is escaped
+                    }
+                    else if (ch.equals("\"")) {
+                        // end of string
+                        break;
+                    }
+                    else {
+                        lexeme.append(ch);
+                    }
+                }
+            }
+
+            Token token = new Token(TokenType.STRING, lexeme.toString());
+            return token;
         }
-
         private TokenType classifyToken(String lexeme) {
             switch (lexeme) {
                 case "{": return TokenType.LEFT_BRACE;
@@ -308,7 +338,7 @@ public class JsonModule {
                 case ":": return TokenType.COLON;
                 case ",": return TokenType.COMMA;
                 default:
-                    return null;
+                    return TokenType.UNKNOWN;
             }
         }
 

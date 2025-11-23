@@ -1,0 +1,29 @@
+@echo off
+setlocal
+
+echo Creating Program.java...
+
+type nul > Program.java
+
+echo public class Program { >> Program.java
+echo     public static void main(String[] args) { >> Program.java
+echo         System.out.println("Hello World from Java!"); >> Program.java
+echo         int a = 5; >> Program.java
+echo         int b = 7; >> Program.java
+echo         int c = a + b; >> Program.java
+echo         System.out.println("a + b = " + c); >> Program.java
+echo         System.out.println("Program finished."); >> Program.java
+echo     } >> Program.java
+echo } >> Program.java
+
+echo Compiling...
+javac Program.java
+
+if %errorlevel%==0 (
+    echo Running Program...
+    start cmd /k java Program
+) else (
+    echo Compile FAILED!
+)
+
+pause
