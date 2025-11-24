@@ -9,6 +9,7 @@
 - [How to Run](#how-to-run)
 - [Testing](#testing)
 - [License](#license)
+- [Author](#author)
 
 ## Introduction
 
