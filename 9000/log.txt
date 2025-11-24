@@ -1,0 +1,5 @@
+0|1|mkdir test
+0|2|type nul > test.txt
+1|3|type nul > test2.txt
+1|4|echo yagiz erdem > test2.txt
+1|5|type nul > test3.txt

@@ -103,7 +103,7 @@ public class RaftModule {
             else{
                 this.storage.setServerLevel(ServerLevel.Follower);
                 this.redirectOutput.WriteCout("Initialized server authority level as : " + ServerLevel.Follower);
-                System.out.println("Initialized server authority level as : " + ServerLevel.Follower);
+                System.out.println("Initialized server authority level as : " + ServerLevel.Follower + " PORT : " + serverPort);
             }
 
 
@@ -525,7 +525,9 @@ public class RaftModule {
     }
 
     private void handleClientCommandRpc(ClientCommandRPCDTO dto) {
-        clientQueue.add(dto);
+        if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
+            clientQueue.add(dto);
+        }
     }
 
 
@@ -891,16 +893,21 @@ public class RaftModule {
         }).start();
     }
 
-    public void manageClientRequestQueue(){
+    public void manageClientRequestQueue() {
         new Thread(() -> {
             while (true) {
-                if(this.storage.getServerLevel().equals(ServerLevel.Leader)) {
-                    try {
-                        ClientCommandRPCDTO dto = clientQueue.take(); // blocking
+
+                if (!this.storage.getServerLevel().equals(ServerLevel.Leader)) {
+                    try { Thread.sleep(50); } catch (Exception ignored) {}
+                    continue;
+                }
+
+                try {
+                    ClientCommandRPCDTO dto = clientQueue.poll((int)this.timeFragment * 4, TimeUnit.MILLISECONDS);
+                    if (dto != null) {
                         appendCommandIntoLog(dto);
                     }
-                    catch (Exception ex) { }
-                }
+                } catch (Exception ignored) {}
             }
         }).start();
     }
