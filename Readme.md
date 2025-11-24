@@ -6,7 +6,6 @@
 - [Features](#raft-protocol-features)
 - [Architecture Overview](#architecture-overview)
 - [Workflow / Algorithm](#workflow--algorithm)
-- [Configuration](#configuration)
 - [How to Run](#how-to-run)
 - [Testing](#testing)
 - [License](#license)
@@ -276,7 +275,7 @@ It also avoids accidental coupling between timing-sensitive heartbeat traffic an
 
 Overall, this execution model provides a clean, deterministic Raft implementation where concurrency is pushed to the outer layers (RPC threads and background workers), while the Raft core itself stays structured, predictable, and easy to reason about.
 
-## Configuration
+## How to Run
 
 To run the project, first **clone the Git repository** or download and unzip it.  
 A valid **Java SDK** (JDK) installation is required to compile and execute the program.
@@ -306,3 +305,49 @@ The 3NDefaultLauncherWithBackpressure script is the same as 3NDefaultLauncher, b
 5NDefaultLauncher same with 3NDefaultLauncher but starts 5 nodes in cluster
 
 5NDefaultLauncherWithBackpressure same with 3NDefaultLauncherWithBackpressure but starts 5 nodes in cluster
+
+**IMPORTANT NOTE** <br>
+
+After terminating all servers, **delete each server’s current working directory**  
+(the CWD of each server is the directory named with that server’s port number).
+
+In Raft, the **commit index is volatile**, so when all servers shut down, the commit
+system also loses its reference to the previous commit index.  
+On the next run, the commit index will incorrectly start **ahead of the lastApplied**
+value of the state machine, because both default to `0` during initialization.
+
+To avoid this mismatch, **you must delete the CWD of each server before restarting**  
+whether you are launching through the `.bat` scripts or manually via CMD / PowerShell
+
+**IMPORTANT NOTE 2** <br>
+The default batch script automatically generates a Java QuickSort program, then compiles and executes it on each server (including the leader).  
+Running an external process inside a Raft server temporarily blocks the node from accepting new gRPC requests from the client.
+
+To unblock the server and allow it to resume listening for incoming RPCs, you must **close the terminal window** where the external process is running.
+
+This rule also applies if your custom sequence of CMD commands launches any external program as long as an external process is running in that terminal, the Raft node will not process new gRPC messages.
+
+## Testing
+
+For testing purposes, I wrote my own batch scripts for both the gRPC layer and the Raft module.  
+I also created a separate entry point for testing the JSON module by adding an additional `main` function dedicated solely to that component.
+
+## License
+
+This project is licensed under the **MIT License**.
+
+## Author
+
+**Yağız Erdem**  
+Computer Engineering, Dokuz Eylül University
+
+Key Contributions:
+
+- Custom gRPC-like transport layer (raw TCP, multithreaded RPC dispatch) developed from scratch
+- JSON engine with an LL(1) parser, lexer, and reflection-based serializer built from scratch
+- Full Raft-style consensus module (multi-threaded and multi-process cluster simulation) from scratch
+- Reflection-based output forwarding system for distributed log mirroring from scratch
+- Replicated client shell for sending commands to the leader and monitoring reflected output from scratch
+
+GitHub: https://github.com/yagizerdem <br/>
+Email: yagizerdem819@gmail.com
