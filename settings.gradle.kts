@@ -1,0 +1,1 @@
+rootProject.name = "Raft-Consensus-Protocol-Simulator"
