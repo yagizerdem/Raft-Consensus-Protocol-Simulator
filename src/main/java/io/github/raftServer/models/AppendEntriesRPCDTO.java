@@ -1,0 +1,46 @@
+package io.github.raftServer.models;
+
+import io.github.raftServer.jsonModule.*;
+import java.util.ArrayList;
+
+@JsonSerializable
+public class AppendEntriesRPCDTO {
+
+    @JsonElement
+    public  long term;
+
+    @JsonElement
+    public String leaderId;
+
+    @JsonElement
+    public long prevLogIndex;
+    @JsonElement
+    public long prevLogTerm;
+
+    @JsonElement
+    public ArrayList<Log> entries;
+
+    @JsonElement
+    public long leaderCommit;
+
+    @JsonElement
+    public String traceId;
+
+    public AppendEntriesRPCDTO(){
+        entries = new ArrayList<>();
+    }
+
+
+    @Override
+    public String toString() {
+        return "AppendEntriesRPCDTO{" +
+                "term=" + term +
+                ", leaderId='" + leaderId + '\'' +
+                ", prevLogIndex=" + prevLogIndex +
+                ", prevLogTerm=" + prevLogTerm +
+                ", leaderCommit=" + leaderCommit +
+                ", entries=" + (entries != null ? entries.toString() : "null") +
+                ", \"traceId\" . " + traceId +
+                '}';
+    }
+}

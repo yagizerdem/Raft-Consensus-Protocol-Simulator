@@ -1,0 +1,19 @@
+package io.github.raftServer.rpcModule;
+
+import io.github.raftServer.models.*;
+
+
+public interface IRpcHandler {
+
+    void handleRequestVoteRpc(RequestVoteRPCDTO requestVoteDto);
+
+    void handleRequestVoteResponseRpc(RequestVoteResultRPCDTO requestVoteResponseDto);
+
+    void handleAppendEntriesRpc(AppendEntriesRPCDTO appendEntriesDto);
+
+    void handleAppendEntriesResponseRpc(AppendEntriesRPCResultDTO appendEntriesResponseDto);
+
+    void handleClientCommandRpc(ClientCommandRPCDTO clientCommandDto);
+
+    void handleClientCommandResponseRpc(ClientCommandRPCResultDTO clientCommandRPCResultDTO);
+}

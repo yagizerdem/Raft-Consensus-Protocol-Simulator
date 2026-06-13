@@ -1,0 +1,43 @@
+package io.github.raftServer.models;
+
+import io.github.raftServer.jsonModule.*;
+
+@JsonSerializable
+public class RpcPayload {
+
+    // AppendEntries
+    @JsonElement
+    public AppendEntriesRPCDTO appendEntriesRPCDTO;
+
+    // RequestVote
+    @JsonElement
+    public RequestVoteRPCDTO requestVoteRPCDTO;
+
+    // AppendEntriesResponse
+    @JsonElement
+    public AppendEntriesRPCResultDTO appendEntriesRPCResultDTO;
+
+    // RequestVoteResponse
+    @JsonElement
+    public RequestVoteResultRPCDTO requestVoteResultRPCDTO;
+
+    @JsonElement
+    public ClientCommandRPCDTO clientCommandRPCDTO;
+
+    @JsonElement
+    public ClientCommandRPCResultDTO clientCommandRPCResultDTO;
+    @JsonElement
+    public String type;
+
+    @Override
+    public String toString() {
+        return "RpcPayload{" +
+                "type='" + type + '\'' +
+                ", appendEntriesRPCDTO=" + appendEntriesRPCDTO +
+                ", requestVoteRPCDTO=" + requestVoteRPCDTO +
+                ", appendEntriesRPCResultDTO=" + appendEntriesRPCResultDTO +
+                ", requestVoteResultRPCDTO=" + requestVoteResultRPCDTO +
+                ", clientCommandRPCResultDTO=" + clientCommandRPCDTO +
+                '}';
+    }
+}
