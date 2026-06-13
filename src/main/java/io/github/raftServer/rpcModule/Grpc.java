@@ -23,6 +23,7 @@ public class Grpc implements IRpcHandler {
     public List<Peer> peers = new ArrayList<>();
     private final JsonModule jsonModule;
     private final String nodeId;
+    private final IRpcHandler rpcHandlers;
 
     // compares by giving dest port NOT LOCAL PORT
     private boolean containsPort(List<RpcConnection> connections, int port) {
@@ -75,17 +76,19 @@ public class Grpc implements IRpcHandler {
         return this.serverPort;
     }
 
-    public Grpc(int serverPort, String nodeId) {
+    public Grpc(int serverPort, String nodeId, IRpcHandler rpcHandlers) {
         this.serverPort = serverPort;
         this.jsonModule = new JsonModule();
         this.nodeId = nodeId;
+        this.rpcHandlers = rpcHandlers;
     }
 
-    public Grpc(int serverPort, List<Peer> peers, String nodeId) {
+    public Grpc(int serverPort, List<Peer> peers, String nodeId, IRpcHandler rpcHandlers) {
         this.serverPort = serverPort;
         this.peers = peers;
         this.jsonModule = new JsonModule();
         this.nodeId = nodeId;
+        this.rpcHandlers = rpcHandlers;
     }
 
     public void start() {
@@ -259,26 +262,32 @@ public class Grpc implements IRpcHandler {
 
     @Override
     public void handleRequestVoteRpc(RpcConnection connection, RequestVoteRPCDTO requestVoteDto) {
+        this.rpcHandlers.handleRequestVoteRpc(connection, requestVoteDto);
     }
 
     @Override
     public void handleRequestVoteResponseRpc(RpcConnection connection, RequestVoteResultRPCDTO requestVoteResponseDto) {
+        this.rpcHandlers.handleRequestVoteResponseRpc(connection, requestVoteResponseDto);
     }
 
     @Override
     public void handleAppendEntriesRpc(RpcConnection connection, AppendEntriesRPCDTO appendEntriesDto) {
+        this.rpcHandlers.handleAppendEntriesRpc(connection, appendEntriesDto);
     }
 
     @Override
     public void handleAppendEntriesResponseRpc(RpcConnection connection, AppendEntriesRPCResultDTO appendEntriesResponseDto) {
+        this.rpcHandlers.handleAppendEntriesResponseRpc(connection, appendEntriesResponseDto);
     }
 
     @Override
     public void handleClientCommandRpc(RpcConnection connection, ClientCommandRPCDTO clientCommandDto) {
+        this.rpcHandlers.handleClientCommandRpc(connection, clientCommandDto);
     }
 
     @Override
     public void handleClientCommandResponseRpc(RpcConnection connection, ClientCommandRPCResultDTO clientCommandRPCResultDTO) {
+        this.rpcHandlers.handleClientCommandResponseRpc(connection, clientCommandRPCResultDTO);
     }
 
     @Override
@@ -305,6 +314,6 @@ public class Grpc implements IRpcHandler {
 
     @Override
     public void handleServerCredentialsResponseRpc(RpcConnection connection, ServerCredentialsResponseDTO serverCredentialsResponseDTO) {
-
+        this.rpcHandlers.handleServerCredentialsResponseRpc(connection, serverCredentialsResponseDTO);
     }
 }

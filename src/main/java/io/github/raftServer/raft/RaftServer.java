@@ -1,15 +1,13 @@
 package io.github.raftServer.raft;
 
-import com.sun.jdi.event.ThreadStartEvent;
-import io.github.raftServer.models.ServerCredentialsDTO;
+import io.github.raftServer.models.*;
 import io.github.raftServer.rpcModule.Grpc;
+import io.github.raftServer.rpcModule.IRpcHandler;
 
-import java.io.IOException;
-import java.lang.management.ThreadInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RaftServer {
+public class RaftServer implements IRpcHandler {
 
     public Grpc grpc;
 
@@ -23,7 +21,7 @@ public class RaftServer {
         this.serverPort = port;
         this.peers = peers;
         this.nodeId = nodeId;
-        this.grpc = new Grpc(port, peers, nodeId);
+        this.grpc = new Grpc(port, peers, nodeId, this);
     }
 
     public void start() {
@@ -32,7 +30,7 @@ public class RaftServer {
         this.sendServerCredentials();
     }
 
-    public void sendServerCredentials(){
+    public void sendServerCredentials() {
         new Thread(() ->{
             while (true) {
                 try {
@@ -48,5 +46,37 @@ public class RaftServer {
                 }
             }
         }).start();
+    }
+
+    @Override
+    public void handleRequestVoteRpc(Grpc.RpcConnection connection, RequestVoteRPCDTO requestVoteDto) {
+    }
+
+    @Override
+    public void handleRequestVoteResponseRpc(Grpc.RpcConnection connection, RequestVoteResultRPCDTO requestVoteResponseDto) {
+    }
+
+    @Override
+    public void handleAppendEntriesRpc(Grpc.RpcConnection connection, AppendEntriesRPCDTO appendEntriesDto) {
+    }
+
+    @Override
+    public void handleAppendEntriesResponseRpc(Grpc.RpcConnection connection, AppendEntriesRPCResultDTO appendEntriesResponseDto) {
+    }
+
+    @Override
+    public void handleClientCommandRpc(Grpc.RpcConnection connection, ClientCommandRPCDTO clientCommandDto) {
+    }
+
+    @Override
+    public void handleClientCommandResponseRpc(Grpc.RpcConnection connection, ClientCommandRPCResultDTO clientCommandRPCResultDTO) {
+    }
+
+    @Override
+    public void handleServerCredentialsRpc(Grpc.RpcConnection connection, ServerCredentialsDTO serverCredentialsDTO) {}
+
+    @Override
+    public void handleServerCredentialsResponseRpc(Grpc.RpcConnection connection, ServerCredentialsResponseDTO serverCredentialsResponseDTO) {
+
     }
 }
