@@ -5,15 +5,19 @@ import io.github.raftServer.models.*;
 
 public interface IRpcHandler {
 
-    void handleRequestVoteRpc(RequestVoteRPCDTO requestVoteDto);
+    void handleRequestVoteRpc(Grpc.RpcConnection connection, RequestVoteRPCDTO requestVoteDto);
 
-    void handleRequestVoteResponseRpc(RequestVoteResultRPCDTO requestVoteResponseDto);
+    void handleRequestVoteResponseRpc(Grpc.RpcConnection connection, RequestVoteResultRPCDTO requestVoteResponseDto);
 
-    void handleAppendEntriesRpc(AppendEntriesRPCDTO appendEntriesDto);
+    void handleAppendEntriesRpc(Grpc.RpcConnection connection, AppendEntriesRPCDTO appendEntriesDto);
 
-    void handleAppendEntriesResponseRpc(AppendEntriesRPCResultDTO appendEntriesResponseDto);
+    void handleAppendEntriesResponseRpc(Grpc.RpcConnection connection, AppendEntriesRPCResultDTO appendEntriesResponseDto);
 
-    void handleClientCommandRpc(ClientCommandRPCDTO clientCommandDto);
+    void handleClientCommandRpc(Grpc.RpcConnection connection, ClientCommandRPCDTO clientCommandDto);
 
-    void handleClientCommandResponseRpc(ClientCommandRPCResultDTO clientCommandRPCResultDTO);
+    void handleClientCommandResponseRpc(Grpc.RpcConnection connection, ClientCommandRPCResultDTO clientCommandRPCResultDTO);
+
+    void  handleServerCredentialsRpc(Grpc.RpcConnection connection, ServerCredentialsDTO serverCredentialsDTO);
+
+    void  handleServerCredentialsResponseRpc(Grpc.RpcConnection connection, ServerCredentialsResponseDTO serverCredentialsResponseDTO);
 }

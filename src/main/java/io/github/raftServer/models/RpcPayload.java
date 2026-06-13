@@ -26,6 +26,11 @@ public class RpcPayload {
 
     @JsonElement
     public ClientCommandRPCResultDTO clientCommandRPCResultDTO;
+
+    @JsonElement
+    public ServerCredentialsDTO serverCredentialsDTO;
+
+
     @JsonElement
     public String type;
 
@@ -38,6 +43,7 @@ public class RpcPayload {
                 ", appendEntriesRPCResultDTO=" + appendEntriesRPCResultDTO +
                 ", requestVoteResultRPCDTO=" + requestVoteResultRPCDTO +
                 ", clientCommandRPCResultDTO=" + clientCommandRPCDTO +
+                ", serverCredentialsDTO=" +serverCredentialsDTO +
                 '}';
     }
 }
