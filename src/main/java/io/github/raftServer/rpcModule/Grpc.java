@@ -40,6 +40,16 @@ public class Grpc implements IRpcHandler {
         return false;
     }
 
+    public RpcConnection getRpcConnectionByPort(List<RpcConnection> connections, int port) {
+        Optional<RpcConnection> option = connections.stream().filter(x -> x.socket.getPort() == port).findFirst();
+        return option.isPresent() ? option.get() : null;
+    }
+
+    public RpcConnection getRpcConnectionByNodeId(List<RpcConnection> connections, String nodeId) {
+        Optional<RpcConnection> option = connections.stream().filter(x -> x.nodeId.equals(nodeId)).findFirst();
+        return option.isPresent() ? option.get() : null;
+    }
+
     public static class RpcConnection {
         Socket socket; // client socket
         DataInputStream inputStream;
@@ -96,7 +106,7 @@ public class Grpc implements IRpcHandler {
             this.ss = new ServerSocket(serverPort);
             acceptInNewThread();
             connectPeers();
-            peerConnectionsDebug();
+            // peerConnectionsDebug();
         }catch (IOException ex) {
             System.err.println(ex.getMessage());
         }

@@ -14,6 +14,8 @@ services:
       watch:
         - action: rebuild
           path: ./build/libs/Raft-Consensus-Protocol-Simulator.jar
+    volumes:
+      - raft-data:/node1/storage/persistent
 
   node2:
     build: .
@@ -30,6 +32,8 @@ services:
       watch:
         - action: rebuild
           path: ./build/libs/Raft-Consensus-Protocol-Simulator.jar
+    volumes:
+      - raft-data:/node2/storage/persistent
 
   node3:
     build: .
@@ -46,6 +50,8 @@ services:
       watch:
         - action: rebuild
           path: ./build/libs/Raft-Consensus-Protocol-Simulator.jar
+    volumes:
+      - raft-data:/node3/storage/persistent
 
   node4:
     build: .
@@ -62,6 +68,8 @@ services:
       watch:
         - action: rebuild
           path: ./build/libs/Raft-Consensus-Protocol-Simulator.jar
+    volumes:
+      - raft-data:/node4/storage/persistent
 
   node5:
     build: .
@@ -78,3 +86,8 @@ services:
       watch:
         - action: rebuild
           path: ./build/libs/Raft-Consensus-Protocol-Simulator.jar
+    volumes:
+      - raft-data:/node5/storage/persistent
+
+volumes:
+  raft-data:
